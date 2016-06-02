@@ -14,6 +14,6 @@ public class LvAdapter extends AbsLvDAdapter{
     public LvAdapter(Context context, List data) {
         super(context, data);
         mManager.addDelegate(new LvTextDelegate(context, Constance.ADAPTER_TYPE.TYPE_TEXT));
-        mManager.addDelegate(new LvImgDelegate(context, Constance.ADAPTER_TYPE.TYPE_IMG));
+//        mManager.addDelegate(new LvImgDelegate(context, Constance.ADAPTER_TYPE.TYPE_IMG));
     }
 }

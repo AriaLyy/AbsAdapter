@@ -55,10 +55,10 @@ public class ListViewActivity extends AppCompatActivity {
                 tEntity.setText("text ==> " + i);
                 list.add(tEntity);
             } else {
-                ImgEntity iEntity = new ImgEntity();
-                iEntity.setAbsType(Constance.ADAPTER_TYPE.TYPE_IMG);
-                iEntity.setText("img ==> " + i);
-                list.add(iEntity);
+//                ImgEntity iEntity = new ImgEntity();
+//                iEntity.setAbsType(Constance.ADAPTER_TYPE.TYPE_IMG);
+//                iEntity.setText("img ==> " + i);
+//                list.add(iEntity);
             }
         }
         return list;
