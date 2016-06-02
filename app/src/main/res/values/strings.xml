@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AbsAdapterDemo</string>
+
+    <string-array name="list_data">
+        <item>123</item>
+    </string-array>
+</resources>
