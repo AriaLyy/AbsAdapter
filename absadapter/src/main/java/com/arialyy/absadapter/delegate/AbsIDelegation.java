@@ -24,4 +24,5 @@ public interface AbsIDelegation {
      */
     public int getItemViewType();
 
+
 }
