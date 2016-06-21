@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
+import com.arialyy.absadapter.delegate.recycler_view.AbsRvDAdapter;
 import com.arialyy.absadapter.delegate.recycler_view.AbsRvDelegation;
 import com.arialyy.absadapter.recycler_view.AbsRVHolder;
 import com.arialyy.absadapterdemo.R;
@@ -17,8 +18,8 @@ import butterknife.InjectView;
 public class RvTextDelegate extends AbsRvDelegation<TextEntity, RvTextDelegate.RvDelegate> {
 
 
-    protected RvTextDelegate(Context context, int itemType) {
-        super(context, itemType);
+    public RvTextDelegate(Context context, AbsRvDAdapter adapter, int itemType) {
+        super(context, adapter, itemType);
     }
 
     @Override

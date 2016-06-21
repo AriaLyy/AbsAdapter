@@ -15,8 +15,8 @@ public class RvAdapter extends AbsRvDAdapter {
 
     public RvAdapter(Context context, List data) {
         super(context, data);
-        mManager.addDelegate(new RvTextDelegate(context, Constance.ADAPTER_TYPE.TYPE_TEXT));
-        mManager.addDelegate(new RvImgDelegate(context, Constance.ADAPTER_TYPE.TYPE_IMG));
+        mManager.addDelegate(new RvTextDelegate(context, this, Constance.ADAPTER_TYPE.TYPE_TEXT));
+        mManager.addDelegate(new RvImgDelegate(context, this, Constance.ADAPTER_TYPE.TYPE_IMG));
     }
 
 }

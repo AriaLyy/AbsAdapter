@@ -22,9 +22,9 @@ interface AbsIRvDelegation<T, H extends AbsRVHolder> extends AbsIDelegation {
      * 绑定数据
      *
      * @param position
-     * @param helper
+     * @param holder
      * @param item
      */
-    public void bindData(int position, H helper, T item);
+    public void bindData(int position, H holder, T item);
 
 }

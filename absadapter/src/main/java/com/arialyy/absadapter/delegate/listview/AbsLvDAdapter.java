@@ -1,7 +1,6 @@
 package com.arialyy.absadapter.delegate.listview;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +9,7 @@ import android.widget.BaseAdapter;
 import com.arialyy.absadapter.AbsUtil;
 import com.arialyy.absadapter.delegate.AbsDEntity;
 import com.arialyy.absadapter.delegate.AbsDManager;
+import com.arialyy.absadapter.listview.AbsLvHolder;
 
 import java.util.List;
 
@@ -62,8 +62,8 @@ public abstract class AbsLvDAdapter<T extends AbsDEntity> extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        AbsLvDHolder holder;
-        int type = getItemViewType(position);
+        AbsLvHolder      holder;
+        int              type = getItemViewType(position);
         AbsILvDelegation delegation = (AbsILvDelegation) mManager.getDelegate(type);
         if (delegation == null) {
             throw new NullPointerException("没有type == " + type + "的Delegate");
@@ -73,7 +73,7 @@ public abstract class AbsLvDAdapter<T extends AbsDEntity> extends BaseAdapter {
             holder = delegation.createHolder(convertView);
             convertView.setTag(holder);
         } else {
-            holder = (AbsLvDHolder) convertView.getTag();
+            holder = (AbsLvHolder) convertView.getTag();
         }
         delegation.bindData(position, holder, mData.get(position));
         return convertView;

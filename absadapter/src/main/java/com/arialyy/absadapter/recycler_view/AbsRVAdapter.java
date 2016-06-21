@@ -58,12 +58,12 @@ public abstract class AbsRVAdapter<T, Holder extends AbsRVHolder> extends Recycl
         return mData.size();
     }
 
-    public void setItemClickListener(AbsRVHolder.OnItemClickListener mClick) {
-        mItemClickListener = mClick;
+    public void setOnItemClickListener(AbsRVHolder.OnItemClickListener clickListener) {
+        mItemClickListener = clickListener;
     }
 
-    public void setItemLongClickListener(AbsRVHolder.OnItemLongClickListener mLongClick) {
-        mItemLongClickListener = mLongClick;
+    public void setOnItemLongClickListener(AbsRVHolder.OnItemLongClickListener longClickListener) {
+        mItemLongClickListener = longClickListener;
     }
 
     /**

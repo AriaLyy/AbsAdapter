@@ -77,12 +77,12 @@ public abstract class AbsRvDAdapter<T extends AbsDEntity> extends RecyclerView.A
         return mContext;
     }
 
-    public void setOnItemClickListener(AbsRVHolder.OnItemClickListener mClick) {
-        mItemClickListener = mClick;
+    public void setOnItemClickListener(AbsRVHolder.OnItemClickListener clickListener) {
+        mItemClickListener = clickListener;
     }
 
-    public void setOnItemLongClickListener(AbsRVHolder.OnItemLongClickListener mLongClick) {
-        mItemLongClickListener = mLongClick;
+    public void setOnItemLongClickListener(AbsRVHolder.OnItemLongClickListener longClickListener) {
+        mItemLongClickListener = longClickListener;
     }
 
 }

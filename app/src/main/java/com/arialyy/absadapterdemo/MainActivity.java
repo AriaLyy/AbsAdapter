@@ -1,29 +1,21 @@
 package com.arialyy.absadapterdemo;
 
-import android.app.ListActivity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ListView;
 
-import com.arialyy.absadapter.delegate.AbsDEntity;
-import com.arialyy.absadapterdemo.entity.ImgEntity;
-import com.arialyy.absadapterdemo.recycle_view.RvAdapter;
-import com.arialyy.absadapterdemo.entity.TextEntity;
+import com.arialyy.absadapterdemo.databinding.ActivityMainBinding;
+import com.arialyy.frame.core.AbsActivity;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AbsActivity<ActivityMainBinding> {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int setLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void dataCallback(int result, Object data) {
+
     }
 
     public void onClick(View view) {

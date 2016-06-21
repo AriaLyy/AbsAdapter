@@ -3,11 +3,12 @@ package com.arialyy.absadapter.delegate.listview;
 import android.view.View;
 
 import com.arialyy.absadapter.delegate.AbsIDelegation;
+import com.arialyy.absadapter.listview.AbsLvHolder;
 
 /**
  * Created by lyy on 2016/3/28.
  */
-interface AbsILvDelegation<T, H extends AbsLvDHolder> extends AbsIDelegation {
+interface AbsILvDelegation<T, H extends AbsLvHolder> extends AbsIDelegation {
     /**
      * 创建Holder
      *

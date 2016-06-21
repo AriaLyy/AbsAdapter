@@ -101,7 +101,7 @@ public abstract class RecyclingPagerAdapter extends PagerAdapter {
      *        Heterogeneous lists can specify their number of view types, so that this View is
      *        always of the right type (see {@link #getViewTypeCount()} and
      *        {@link #getItemViewType(int)}).
-     * @param parent The parent that this view will eventually be attached to
+     * @param container The parent that this view will eventually be attached to
      * @return A View corresponding to the data at the specified position.
      */
     public abstract View getView(int position, View convertView, ViewGroup container);

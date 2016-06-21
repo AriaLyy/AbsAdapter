@@ -1,4 +1,4 @@
-package com.arialyy.absadapter.delegate.listview;
+package com.arialyy.absadapter.listview;
 
 import android.support.annotation.IdRes;
 import android.util.SparseArray;
@@ -7,13 +7,13 @@ import android.view.View;
 import butterknife.ButterKnife;
 
 /**
- * Created by lyy on 2016/3/28.
+ * Created by Lyy on 2015/3/12.
  */
-public class AbsLvDHolder {
+public abstract class AbsLvHolder {
     View mView;
     private SparseArray<View> mViews = new SparseArray<>();
 
-    public AbsLvDHolder(View view) {
+    public AbsLvHolder(View view) {
         ButterKnife.inject(this, view);
     }
 

@@ -12,10 +12,16 @@ import com.arialyy.absadapter.recycler_view.AbsRVHolder;
 public abstract class AbsRvDelegation<T extends AbsDEntity, H extends AbsRVHolder> implements AbsIRvDelegation<T, H> {
     private int mItemType;
     private Context mContext;
+    private AbsRvDAdapter mAdapter;
 
-    protected AbsRvDelegation(Context context, int itemType) {
+    public AbsRvDelegation(Context context, AbsRvDAdapter adapter, int itemType) {
         mItemType = itemType;
         mContext = context;
+        mAdapter = adapter;
+    }
+
+    public AbsRvDAdapter getAdapter() {
+        return mAdapter;
     }
 
     @Override

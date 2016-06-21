@@ -1,7 +1,5 @@
 package com.arialyy.absadapter.delegate;
 
-import android.view.View;
-
 /**
  * Created by lyy on 2016/5/30.
  */
@@ -23,6 +21,5 @@ public interface AbsIDelegation {
      * @return
      */
     public int getItemViewType();
-
 
 }
