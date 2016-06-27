@@ -11,7 +11,6 @@ task sourcesJar(type: Jar) {
 }
 
 task javadoc(type: Javadoc) {
-    options.encoding = "utf-8"
     source = android.sourceSets.main.java.srcDirs
     classpath += configurations.compile
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
@@ -90,6 +89,15 @@ def pomConfig = {
             name DEVELOPER_NAME
             email DEVELOPER_EMAIL
         }
+    }
+    "dependencies " {
+//        dependency {
+//            groupId "com.alibaba"
+//            artifactId "fastjson"
+//            "version " "1.2.6"
+//            //同dependencies
+//        }
+//        }
     }
 }
 

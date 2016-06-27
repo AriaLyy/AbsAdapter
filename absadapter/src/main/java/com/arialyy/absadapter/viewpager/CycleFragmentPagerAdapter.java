@@ -136,7 +136,6 @@ public abstract class CycleFragmentPagerAdapter extends PagerAdapter {
 
     /**
      * Return a unique identifier for the item at the given position.
-     * <p/>
      * <p>The default implementation returns the given position.
      * Subclasses should override this method if the positions of items can change.</p>
      *
