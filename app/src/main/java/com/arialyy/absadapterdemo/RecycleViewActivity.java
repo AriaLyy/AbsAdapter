@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.arialyy.absadapter.delegate.AbsDEntity;
-import com.arialyy.absadapter.recycler_view.AbsRVHolder;
+import com.arialyy.absadapter.help.RvItemClickSupport;
 import com.arialyy.absadapterdemo.entity.ImgEntity;
 import com.arialyy.absadapterdemo.entity.TextEntity;
 import com.arialyy.absadapterdemo.recycle_view.RvAdapter;
@@ -32,13 +32,20 @@ public class RecycleViewActivity extends AppCompatActivity {
     }
 
     private void init() {
-        final List<AbsDEntity> data = setData();
-        final RvAdapter adapter = new RvAdapter(this, data);
+        final List<AbsDEntity> data    = setData();
+        final RvAdapter        adapter = new RvAdapter(this, data);
         mList.setLayoutManager(new LinearLayoutManager(this));
         mList.setAdapter(adapter);
-        adapter.setOnItemLongClickListener(new AbsRVHolder.OnItemLongClickListener() {
+//        adapter.setOnItemLongClickListener(new AbsRVHolder.OnItemLongClickListener() {
+//            @Override
+//            public void onItemLongClick(View parent, int position) {
+//                data.remove(position);
+//                adapter.notifyDataSetChanged();
+//            }
+//        });
+        RvItemClickSupport.addTo(mList).setOnItemClickListener(new RvItemClickSupport.OnItemClickListener() {
             @Override
-            public void onItemLongClick(View parent, int position) {
+            public void onItemClick(RecyclerView parent, View view, int position, long id) {
                 data.remove(position);
                 adapter.notifyDataSetChanged();
             }
@@ -47,7 +54,7 @@ public class RecycleViewActivity extends AppCompatActivity {
 
     private List<AbsDEntity> setData() {
         List<AbsDEntity> list = new ArrayList<>();
-        Random rd = new Random();
+        Random           rd   = new Random();
         for (int i = 0; i < 20; i++) {
             if (rd.nextBoolean()) {
                 TextEntity tEntity = new TextEntity();

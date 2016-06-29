@@ -55,6 +55,10 @@ public abstract class AbsRvDAdapter<T extends AbsDEntity> extends RecyclerView.A
         return holder;
     }
 
+    public List<T> getData() {
+        return mData;
+    }
+
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         int type = getItemViewType(position);

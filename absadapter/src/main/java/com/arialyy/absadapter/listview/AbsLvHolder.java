@@ -6,6 +6,8 @@ import android.view.View;
 
 import butterknife.ButterKnife;
 
+//import butterknife.ButterKnife;
+
 /**
  * Created by Lyy on 2015/3/12.
  */

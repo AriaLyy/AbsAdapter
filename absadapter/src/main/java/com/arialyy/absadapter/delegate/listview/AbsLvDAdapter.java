@@ -18,9 +18,9 @@ import java.util.List;
  * 处理含有多个ViewType的Adapter使用
  */
 public abstract class AbsLvDAdapter<T extends AbsDEntity> extends BaseAdapter {
-    private LayoutInflater mInflater;
-    protected List<T> mData;
-    private Context mContext;
+    private   LayoutInflater mInflater;
+    protected List<T>        mData;
+    private   Context        mContext;
     protected AbsDManager mManager = new AbsDManager();
     private String TAG;
 
@@ -29,6 +29,10 @@ public abstract class AbsLvDAdapter<T extends AbsDEntity> extends BaseAdapter {
         mData = data;
         mContext = context;
         TAG = AbsUtil.getClassName(this);
+    }
+
+    public List<T> getData() {
+        return mData;
     }
 
     protected Context getContext() {
@@ -63,7 +67,7 @@ public abstract class AbsLvDAdapter<T extends AbsDEntity> extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         AbsLvHolder      holder;
-        int              type = getItemViewType(position);
+        int              type       = getItemViewType(position);
         AbsILvDelegation delegation = (AbsILvDelegation) mManager.getDelegate(type);
         if (delegation == null) {
             throw new NullPointerException("没有type == " + type + "的Delegate");

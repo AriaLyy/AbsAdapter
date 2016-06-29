@@ -4,8 +4,9 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
-import com.arialyy.absadapter.delegate.listview.AbsLvDHolder;
+import com.arialyy.absadapter.delegate.listview.AbsLvDAdapter;
 import com.arialyy.absadapter.delegate.listview.AbsLvDelegation;
+import com.arialyy.absadapter.listview.AbsLvHolder;
 import com.arialyy.absadapterdemo.R;
 import com.arialyy.absadapterdemo.entity.TextEntity;
 
@@ -17,8 +18,8 @@ import butterknife.InjectView;
 public class LvTextDelegate extends AbsLvDelegation<TextEntity, LvTextDelegate.LvTextHolder> {
 
 
-    protected LvTextDelegate(Context context, int itemType) {
-        super(context, itemType);
+    protected LvTextDelegate(Context context, AbsLvDAdapter adapter, int itemType) {
+        super(context, adapter, itemType);
     }
 
     @Override
@@ -37,7 +38,7 @@ public class LvTextDelegate extends AbsLvDelegation<TextEntity, LvTextDelegate.L
         return R.layout.layout_item_text;
     }
 
-    public class LvTextHolder extends AbsLvDHolder {
+    public class LvTextHolder extends AbsLvHolder {
         @InjectView(R.id.text)
         TextView mText;
 

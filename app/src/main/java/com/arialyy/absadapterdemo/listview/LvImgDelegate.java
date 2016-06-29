@@ -5,9 +5,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.arialyy.absadapter.delegate.listview.AbsLvDHolder;
+import com.arialyy.absadapter.delegate.listview.AbsLvDAdapter;
 import com.arialyy.absadapter.delegate.listview.AbsLvDelegation;
-import com.arialyy.absadapter.recycler_view.AbsRVHolder;
+import com.arialyy.absadapter.listview.AbsLvHolder;
 import com.arialyy.absadapterdemo.R;
 import com.arialyy.absadapterdemo.entity.ImgEntity;
 
@@ -19,8 +19,8 @@ import butterknife.InjectView;
 public class LvImgDelegate extends AbsLvDelegation<ImgEntity, LvImgDelegate.LVImgHolder> {
 
 
-    protected LvImgDelegate(Context context, int itemType) {
-        super(context, itemType);
+    protected LvImgDelegate(Context context, AbsLvDAdapter adapter, int itemType) {
+        super(context, adapter, itemType);
     }
 
     @Override
@@ -38,7 +38,7 @@ public class LvImgDelegate extends AbsLvDelegation<ImgEntity, LvImgDelegate.LVIm
         return R.layout.layout_item_img;
     }
 
-    public class LVImgHolder extends AbsLvDHolder {
+    public class LVImgHolder extends AbsLvHolder {
         @InjectView(R.id.img)
         ImageView img;
         @InjectView(R.id.text)
