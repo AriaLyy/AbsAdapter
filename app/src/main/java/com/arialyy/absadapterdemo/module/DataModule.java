@@ -29,10 +29,12 @@ public class DataModule extends BaseModule {
         List<AbsDEntity> list = new ArrayList<>();
         Random           rd   = new Random();
         for (int i = 0; i < 16; i++) {
-            int seed = rd.nextInt(20);
-            if (seed < 2) {
+            if (i == 0) {
                 list.add(getBannerEntity());
-            } else if (seed < 8) {
+                continue;
+            }
+            int seed = rd.nextInt(20);
+            if (seed < 8) {
                 list.add(getGameDetailEntity(i));
             } else {
                 list.add(getGameNotifyEntity(i));
@@ -45,6 +47,10 @@ public class DataModule extends BaseModule {
         List<AbsDEntity> list = new ArrayList<>();
         Random           rd   = new Random();
         for (int i = 0; i < 20; i++) {
+            if (i == 0) {
+                list.add(getBannerEntity());
+                continue;
+            }
             int seed = rd.nextInt(20);
             if (seed < 4) {
                 list.add(getTextEntity(i));
@@ -52,10 +58,8 @@ public class DataModule extends BaseModule {
                 list.add(getImgEntity(i));
             } else if (seed < 12) {
                 list.add(getGameDetailEntity(i));
-            } else if (seed < 18) {
-                list.add(getGameDetailEntity(i));
             } else {
-                list.add(getBannerEntity());
+                list.add(getGameDetailEntity(i));
             }
         }
         callback(Constance.CODE.RV_LIST_DATA, list);
