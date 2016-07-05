@@ -1,4 +1,4 @@
-package com.arialyy.absadapterdemo.recycle_view;
+package com.arialyy.absadapterdemo.recycle_view.delegate;
 
 import android.content.Context;
 import android.view.View;

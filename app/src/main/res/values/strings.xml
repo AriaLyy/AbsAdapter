@@ -4,4 +4,9 @@
     <string-array name="list_data">
         <item>123</item>
     </string-array>
+
+    <string-array name="img_shot">
+        <item>http://static.gaoshouyou.com/i/be/d7/cabe97fa7dd7c4fb90660c1f2fd99557.JPG</item>
+        <item>http://static.gaoshouyou.com/i/86/37/808608a54737c6e571cb6405203ba5da.JPG</item>
+    </string-array>
 </resources>

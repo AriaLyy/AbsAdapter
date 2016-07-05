@@ -1,4 +1,4 @@
-package com.arialyy.absadapterdemo.recycle_view;
+package com.arialyy.absadapterdemo.recycle_view.delegate;
 
 import android.content.Context;
 import android.view.View;
@@ -67,7 +67,7 @@ public class RvGameDetailDelegate extends AbsRvDelegation<GameDetailEntity, RvGa
         ImageView img;
         @InjectView(R.id.title)
         TextView  title;
-        @InjectView(R.id.detail)
+        @InjectView(R.id.game_detail)
         TextView  detail;
         @InjectView(R.id.bt)
         Button    bt;

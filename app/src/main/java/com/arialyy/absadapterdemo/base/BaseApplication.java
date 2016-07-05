@@ -1,4 +1,4 @@
-package com.arialyy.absadapterdemo;
+package com.arialyy.absadapterdemo.base;
 
 import android.app.Application;
 

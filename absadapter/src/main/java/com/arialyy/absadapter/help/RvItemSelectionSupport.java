@@ -134,7 +134,7 @@ public class RvItemSelectionSupport {
      * @return A new array which contains the id of each checked item in the
      *         list.
      *
-     * @see Adapter#hasStableIds()
+     * Adapter#hasStableIds()
      */
     public long[] getCheckedItemIds() {
         if (mChoiceMode == ChoiceMode.NONE

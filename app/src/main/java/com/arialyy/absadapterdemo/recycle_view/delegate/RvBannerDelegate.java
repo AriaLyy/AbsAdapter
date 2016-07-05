@@ -1,4 +1,4 @@
-package com.arialyy.absadapterdemo.recycle_view;
+package com.arialyy.absadapterdemo.recycle_view.delegate;
 
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
@@ -24,9 +24,11 @@ import butterknife.InjectView;
  * Created by lyy on 2016/6/21.
  */
 public class RvBannerDelegate extends AbsRvDelegation<DBannerEntity, RvBannerDelegate.BannerHolder> {
+    FragmentManager mFm;
 
-    public RvBannerDelegate(Context context, AbsRvDAdapter adapter, int itemType) {
+    public RvBannerDelegate(Context context, AbsRvDAdapter adapter, int itemType, FragmentManager fm) {
         super(context, adapter, itemType);
+        mFm = fm;
     }
 
     @Override
@@ -38,22 +40,17 @@ public class RvBannerDelegate extends AbsRvDelegation<DBannerEntity, RvBannerDel
     public void bindData(int position, BannerHolder holder, DBannerEntity item) {
         SimpleViewPagerAdapter adapter = (SimpleViewPagerAdapter) holder.vp.getTag(holder.vp.getId());
         if (adapter == null) {
-            FragmentManager fm = getFm();
-            if (fm != null) {
-                adapter = new SimpleViewPagerAdapter(fm);
-                holder.vp.setTag(holder.vp.getId(), adapter);
-                List<BannerEntity> banners = item.getBanners();
-                int                i       = 0;
-                for (BannerEntity entity : banners) {
-                    BannerFragment fragment = BannerFragment.newInstance(entity);
-                    fragment.setDrawable(R.mipmap.ic_launcher);
-                    fragment.setCanClick(true);
-                    adapter.addFrag(fragment, i + "banner");
-                    i++;
-                }
-                holder.vp.setAdapter(adapter);
-                holder.indicator.setViewPager(holder.vp);
+            adapter = new SimpleViewPagerAdapter(mFm);
+            holder.vp.setTag(holder.vp.getId(), adapter);
+            List<BannerEntity> banners = item.getBanners();
+            int                i       = 0;
+            for (BannerEntity entity : banners) {
+                BannerFragment fragment = BannerFragment.newInstance(entity);
+                adapter.addFrag(fragment, i + "banner");
+                i++;
             }
+            holder.vp.setAdapter(adapter);
+            holder.indicator.setViewPager(holder.vp);
         }
     }
 

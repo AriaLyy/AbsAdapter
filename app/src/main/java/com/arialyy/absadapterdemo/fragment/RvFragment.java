@@ -1,0 +1,100 @@
+package com.arialyy.absadapterdemo.fragment;
+
+import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+
+import com.arialyy.absadapter.delegate.AbsDEntity;
+import com.arialyy.absadapter.delegate.recycler_view.AbsRvDAdapter;
+import com.arialyy.absadapter.help.RvItemClickSupport;
+import com.arialyy.absadapterdemo.Constance;
+import com.arialyy.absadapterdemo.R;
+import com.arialyy.absadapterdemo.base.BaseFragment;
+import com.arialyy.absadapterdemo.databinding.FragmentRvBinding;
+import com.arialyy.absadapterdemo.module.DataModule;
+import com.arialyy.absadapterdemo.recycle_view.RvAdapter_1;
+import com.arialyy.absadapterdemo.recycle_view.RvAdapter_2;
+import com.arialyy.absadapterdemo.recycle_view.RvAdapter_3;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.InjectView;
+
+/**
+ * Created by lyy on 2016/7/5.
+ */
+public class RvFragment extends BaseFragment<FragmentRvBinding> {
+    @InjectView(R.id.list)
+    RecyclerView mList;
+    List<AbsDEntity> mData = new ArrayList<>();
+    AbsRvDAdapter mAdapter;
+
+    int mType = 0;
+
+    public static RvFragment newInstance(int type) {
+        Bundle     args     = new Bundle();
+        RvFragment fragment = new RvFragment();
+        args.putInt(Constance.KEY.RV_ITEM_TYPE, type);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    protected int setLayoutId() {
+        return R.layout.fragment_rv;
+    }
+
+    @Override
+    protected void init(Bundle savedInstanceState) {
+        super.init(savedInstanceState);
+        mType = getArguments().getInt(Constance.KEY.RV_ITEM_TYPE);
+        if (mType == 0) {
+            mAdapter = new RvAdapter_1(getContext(), mData, getChildFragmentManager());
+        } else if (mType == 1) {
+            mAdapter = new RvAdapter_2(getContext(), mData, getChildFragmentManager());
+        } else if (mType == 2) {
+            mAdapter = new RvAdapter_3(getContext(), mData);
+        }
+        if (mAdapter == null) return;
+
+        mList.setLayoutManager(new LinearLayoutManager(getContext()){
+            @Override
+            protected int getExtraLayoutSpace(RecyclerView.State state) {
+                return 300;
+            }
+        });
+        mList.setAdapter(mAdapter);
+//        RvItemClickSupport.addTo(mList).setOnItemClickListener(new RvItemClickSupport.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(RecyclerView parent, View view, int position, long id) {
+//                mData.remove(position);
+//                mAdapter.notifyDataSetChanged();
+//            }
+//        });
+
+        if (mType == 0) {
+            getModule(DataModule.class).getData_1();
+        } else if (mType == 1) {
+            getModule(DataModule.class).getData_2();
+        } else if (mType == 2) {
+            getModule(DataModule.class).getData_3();
+        }
+    }
+
+    private void setUpList(List<AbsDEntity> list) {
+        if (list != null && list.size() > 0) {
+            mData.addAll(list);
+            mAdapter.notifyDataSetChanged();
+        }
+    }
+
+    @Override
+    protected void dataCallback(int result, Object obj) {
+        super.dataCallback(result, obj);
+        if (result == Constance.CODE.RV_LIST_DATA) {
+            setUpList((List<AbsDEntity>) obj);
+        }
+    }
+}

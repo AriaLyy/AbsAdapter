@@ -7,23 +7,24 @@
         android:orientation="vertical">
 
         <Button
+            android:background="?android:attr/selectableItemBackground"
             android:id="@+id/recycle_view"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center"
             android:onClick="onClick"
-            android:text="RecycleView 的"
+            android:text="积木化 RecycleView"
             android:textSize="18sp"/>
 
         <Button
+            android:background="?android:attr/selectableItemBackground"
             android:id="@+id/list_view"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center"
             android:onClick="onClick"
-            android:text="ListView 的"
+            android:text="积木化 ListView"
             android:textSize="18sp"/>
-
 
     </LinearLayout>
 </layout>

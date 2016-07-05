@@ -1,21 +1,17 @@
-package com.arialyy.absadapterdemo;
+package com.arialyy.absadapterdemo.activity;
 
 import android.content.Intent;
 import android.view.View;
 
+import com.arialyy.absadapterdemo.R;
+import com.arialyy.absadapterdemo.base.BaseActivity;
 import com.arialyy.absadapterdemo.databinding.ActivityMainBinding;
-import com.arialyy.frame.core.AbsActivity;
 
-public class MainActivity extends AbsActivity<ActivityMainBinding> {
+public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     @Override
     protected int setLayoutId() {
         return R.layout.activity_main;
-    }
-
-    @Override
-    protected void dataCallback(int result, Object data) {
-
     }
 
     public void onClick(View view) {

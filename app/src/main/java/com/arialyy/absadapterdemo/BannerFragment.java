@@ -8,6 +8,7 @@ import android.support.annotation.DrawableRes;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.arialyy.absadapterdemo.base.BaseFragment;
 import com.arialyy.absadapterdemo.databinding.FragmentBannerBinding;
 import com.arialyy.absadapterdemo.entity.BannerEntity;
 import com.arialyy.frame.core.AbsFragment;
@@ -22,7 +23,7 @@ import butterknife.InjectView;
  */
 @SuppressLint("ValidFragment")
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-public class BannerFragment extends AbsFragment<FragmentBannerBinding> {
+public class BannerFragment extends BaseFragment<FragmentBannerBinding> {
     @InjectView(R.id.img_banner)
     ImageView mBannerImg;
     private BannerEntity mEntity;
@@ -40,7 +41,7 @@ public class BannerFragment extends AbsFragment<FragmentBannerBinding> {
         return fragment;
     }
 
-        @Override
+    @Override
     protected void init(Bundle savedInstanceState) {
         mEntity = getArguments().getParcelable("entity");
 //        mBannerImg.setScaleType(mScaleType);
@@ -54,11 +55,6 @@ public class BannerFragment extends AbsFragment<FragmentBannerBinding> {
 //                TurnHelp.turn(getContext(), mEntity);
             }
         });
-    }
-
-    @Override
-    protected void onDelayLoad() {
-
     }
 
     /**
@@ -114,10 +110,5 @@ public class BannerFragment extends AbsFragment<FragmentBannerBinding> {
     @Override
     protected int setLayoutId() {
         return R.layout.fragment_banner;
-    }
-
-    @Override
-    protected void dataCallback(int result, Object obj) {
-
     }
 }

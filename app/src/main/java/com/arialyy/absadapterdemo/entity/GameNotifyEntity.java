@@ -1,6 +1,7 @@
 package com.arialyy.absadapterdemo.entity;
 
 import com.arialyy.absadapter.delegate.AbsDEntity;
+import com.arialyy.absadapterdemo.Constance;
 
 /**
  * Created by lyy on 2016/6/21.
@@ -10,6 +11,11 @@ public class GameNotifyEntity extends AbsDEntity {
     String gameIcon;
     String title;
     String detail;
+
+    @Override
+    public int getAbsType() {
+        return Constance.ADAPTER_TYPE.TYPE_NOTIFY;
+    }
 
     public String getImgUrl() {
         return imgUrl;

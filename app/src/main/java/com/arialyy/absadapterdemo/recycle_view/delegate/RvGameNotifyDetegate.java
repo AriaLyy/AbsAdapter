@@ -1,4 +1,4 @@
-package com.arialyy.absadapterdemo.recycle_view;
+package com.arialyy.absadapterdemo.recycle_view.delegate;
 
 import android.content.Context;
 import android.view.View;
@@ -17,9 +17,9 @@ import butterknife.InjectView;
 /**
  * Created by lyy on 2016/6/21.
  */
-public class GameNotifyDetegate extends AbsRvDelegation<GameNotifyEntity, GameNotifyDetegate.GameNotifyHolder> {
+public class RvGameNotifyDetegate extends AbsRvDelegation<GameNotifyEntity, RvGameNotifyDetegate.GameNotifyHolder> {
 
-    public GameNotifyDetegate(Context context, AbsRvDAdapter adapter, int itemType) {
+    public RvGameNotifyDetegate(Context context, AbsRvDAdapter adapter, int itemType) {
         super(context, adapter, itemType);
     }
 

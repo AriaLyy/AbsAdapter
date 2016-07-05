@@ -1,14 +1,16 @@
-package com.arialyy.absadapterdemo;
+package com.arialyy.absadapterdemo.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.arialyy.absadapter.delegate.AbsDEntity;
-import com.arialyy.absadapterdemo.entity.ImgEntity;
+import com.arialyy.absadapterdemo.Constance;
+import com.arialyy.absadapterdemo.R;
+import com.arialyy.absadapterdemo.base.BaseActivity;
+import com.arialyy.absadapterdemo.databinding.ActivityListViewBinding;
 import com.arialyy.absadapterdemo.entity.TextEntity;
 import com.arialyy.absadapterdemo.listview.LvAdapter;
 
@@ -16,22 +18,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import butterknife.InjectView;
+
 /**
  * Created by lyy on 2016/5/30.
  */
-public class ListViewActivity extends AppCompatActivity {
-
+public class ListViewActivity extends BaseActivity<ActivityListViewBinding> {
+    @InjectView(R.id.list)
     ListView mList;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.test_list_view);
-        mList = (ListView) findViewById(R.id.list);
-        init();
+    protected int setLayoutId() {
+        return R.layout.activity_list_view;
     }
 
-    private void init() {
+    @Override
+    protected void init(Bundle savedInstanceState) {
+        super.init(savedInstanceState);
         final List<AbsDEntity> data = setData();
         final LvAdapter adapter = new LvAdapter(this, data);
         mList.setAdapter(adapter);
@@ -63,5 +66,4 @@ public class ListViewActivity extends AppCompatActivity {
         }
         return list;
     }
-
 }
