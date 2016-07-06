@@ -1,12 +1,12 @@
-package com.arialyy.absadapterdemo.listview;
+package com.arialyy.absadapterdemo.delegate;
 
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
-import com.arialyy.absadapter.delegate.listview.AbsLvDAdapter;
-import com.arialyy.absadapter.delegate.listview.AbsLvDelegation;
-import com.arialyy.absadapter.listview.AbsLvHolder;
+import com.arialyy.absadapter.delegate.AbsDelegation;
+import com.arialyy.absadapter.common.AbsHolder;
+import com.arialyy.absadapter.delegate.AbsIAdapter;
 import com.arialyy.absadapterdemo.R;
 import com.arialyy.absadapterdemo.entity.TextEntity;
 
@@ -15,10 +15,9 @@ import butterknife.InjectView;
 /**
  * Created by lyy on 2016/5/30.
  */
-public class LvTextDelegate extends AbsLvDelegation<TextEntity, LvTextDelegate.LvTextHolder> {
+public class TextDelegate extends AbsDelegation<TextEntity, TextDelegate.LvTextHolder> {
 
-
-    protected LvTextDelegate(Context context, AbsLvDAdapter adapter, int itemType) {
+    public TextDelegate(Context context, AbsIAdapter adapter, int itemType) {
         super(context, adapter, itemType);
     }
 
@@ -28,17 +27,17 @@ public class LvTextDelegate extends AbsLvDelegation<TextEntity, LvTextDelegate.L
     }
 
     @Override
-    public void bindData(int position, LvTextDelegate.LvTextHolder helper, TextEntity item) {
+    public void bindData(int position, TextDelegate.LvTextHolder helper, TextEntity item) {
         helper.mText.setText(item.getText());
     }
 
 
     @Override
     public int setLayoutId() {
-        return R.layout.layout_item_text;
+        return R.layout.item_text;
     }
 
-    public class LvTextHolder extends AbsLvHolder {
+    public class LvTextHolder extends AbsHolder {
         @InjectView(R.id.text)
         TextView mText;
 

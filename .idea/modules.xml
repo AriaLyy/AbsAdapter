@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/AbsAdapterPrj.iml" filepath="$PROJECT_DIR$/AbsAdapterPrj.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AbsAdapter.iml" filepath="$PROJECT_DIR$/AbsAdapter.iml" />
       <module fileurl="file://$PROJECT_DIR$/absadapter/absadapter.iml" filepath="$PROJECT_DIR$/absadapter/absadapter.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>

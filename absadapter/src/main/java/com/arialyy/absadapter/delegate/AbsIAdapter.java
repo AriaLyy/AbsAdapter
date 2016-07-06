@@ -15,18 +15,25 @@
  */
 package com.arialyy.absadapter.delegate;
 
+import android.content.Context;
+
+import java.util.List;
+
 /**
- * Created by lyy on 2016/5/30.
+ * Created by lyy on 2016/7/6.
  */
-public class AbsDEntity {
+public interface AbsIAdapter<T extends AbsDEntity> {
+    /**
+     * get list data
+     *
+     * @return
+     */
+    public List<T> getData();
 
-    protected int absType;
-
-    public int getAbsType() {
-        return absType;
-    }
-
-    public void setAbsType(int absType) {
-        this.absType = absType;
-    }
+    /**
+     * get context
+     *
+     * @return
+     */
+    public Context getContext();
 }

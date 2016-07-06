@@ -1,13 +1,13 @@
-package com.arialyy.absadapterdemo.recycle_view.delegate;
+package com.arialyy.absadapterdemo.delegate;
 
 import android.content.Context;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
-import com.arialyy.absadapter.delegate.recycler_view.AbsRvDAdapter;
-import com.arialyy.absadapter.delegate.recycler_view.AbsRvDelegation;
-import com.arialyy.absadapter.recycler_view.AbsRVHolder;
+import com.arialyy.absadapter.delegate.AbsDelegation;
+import com.arialyy.absadapter.common.AbsHolder;
+import com.arialyy.absadapter.delegate.AbsIAdapter;
 import com.arialyy.absadapter.viewpager.SimpleViewPagerAdapter;
 import com.arialyy.absadapterdemo.BannerFragment;
 import com.arialyy.absadapterdemo.R;
@@ -23,10 +23,10 @@ import butterknife.InjectView;
 /**
  * Created by lyy on 2016/6/21.
  */
-public class RvBannerDelegate extends AbsRvDelegation<DBannerEntity, RvBannerDelegate.BannerHolder> {
+public class BannerDelegate extends AbsDelegation<DBannerEntity, BannerDelegate.BannerHolder> {
     FragmentManager mFm;
 
-    public RvBannerDelegate(Context context, AbsRvDAdapter adapter, int itemType, FragmentManager fm) {
+    public BannerDelegate(Context context, AbsIAdapter adapter, int itemType, FragmentManager fm) {
         super(context, adapter, itemType);
         mFm = fm;
     }
@@ -54,20 +54,12 @@ public class RvBannerDelegate extends AbsRvDelegation<DBannerEntity, RvBannerDel
         }
     }
 
-    private FragmentManager getFm() {
-        Context context = getContext();
-        if (context instanceof AbsActivity) {
-            return ((AbsActivity) context).getSupportFragmentManager();
-        }
-        return null;
-    }
-
     @Override
     public int setLayoutId() {
         return R.layout.item_banner;
     }
 
-    class BannerHolder extends AbsRVHolder {
+    class BannerHolder extends AbsHolder {
         @InjectView(R.id.vp)
         ViewPager       vp;
         @InjectView(R.id.indicator)

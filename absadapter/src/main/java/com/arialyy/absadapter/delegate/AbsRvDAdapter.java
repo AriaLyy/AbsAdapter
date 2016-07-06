@@ -1,4 +1,19 @@
-package com.arialyy.absadapter.delegate.recycler_view;
+/*
+ * Copyright (C) 2016 AriaLyy(AbsAdapter)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.arialyy.absadapter.delegate;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -6,10 +21,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.arialyy.absadapter.AbsUtil;
-import com.arialyy.absadapter.delegate.AbsDEntity;
-import com.arialyy.absadapter.delegate.AbsDManager;
-import com.arialyy.absadapter.recycler_view.AbsRVHolder;
+import com.arialyy.absadapter.common.AbsUtil;
+import com.arialyy.absadapter.common.AbsHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +30,10 @@ import java.util.List;
 /**
  * Created by lyy on 2016/5/30.
  */
-public abstract class AbsRvDAdapter<T extends AbsDEntity> extends RecyclerView.Adapter {
+public abstract class AbsRvDAdapter<T extends AbsDEntity> extends RecyclerView.Adapter implements AbsIAdapter<T> {
     protected String TAG;
     protected List<T> mData = new ArrayList<>();
     protected Context mContext;
-    protected AbsRVHolder.OnItemClickListener mItemClickListener;
-    protected AbsRVHolder.OnItemLongClickListener mItemLongClickListener;
     protected AbsDManager mManager = new AbsDManager();
 
     public AbsRvDAdapter(Context context, List<T> data) {
@@ -38,36 +49,35 @@ public abstract class AbsRvDAdapter<T extends AbsDEntity> extends RecyclerView.A
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        AbsRVHolder holder;
-        AbsIRvDelegation delegation = (AbsIRvDelegation) mManager.getDelegate(viewType);
-        if (delegation == null){
+        AbsHolder holder;
+        AbsIDelegation delegation = mManager.getDelegate(viewType);
+        if (delegation == null) {
             throw new NullPointerException("没有type == " + viewType + "的Delegate");
         }
         View view = LayoutInflater.from(parent.getContext()).inflate(delegation.setLayoutId(), parent, false);
         holder = delegation.createHolder(view);
-        if (mItemClickListener != null) {
-            holder.setItemClickListener(mItemClickListener);
-        }
-        if (mItemLongClickListener != null) {
-            holder.setItemLongClickListener(mItemLongClickListener);
-        }
-
         return holder;
     }
 
+    @Override
     public List<T> getData() {
         return mData;
     }
 
     @Override
+    public Context getContext() {
+        return mContext;
+    }
+
+    @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         int type = getItemViewType(position);
-        AbsIRvDelegation delegation = (AbsIRvDelegation) mManager.getDelegate(type);
-        if (delegation == null){
+        AbsIDelegation delegation = mManager.getDelegate(type);
+        if (delegation == null) {
             throw new NullPointerException("没有type == " + type + "的Delegate");
         }
-        if (holder instanceof AbsRVHolder) {
-            delegation.bindData(position, (AbsRVHolder) holder, mData.get(position));
+        if (holder instanceof AbsHolder) {
+            delegation.bindData(position, (AbsHolder) holder, mData.get(position));
         }
     }
 
@@ -75,18 +85,4 @@ public abstract class AbsRvDAdapter<T extends AbsDEntity> extends RecyclerView.A
     public int getItemCount() {
         return mData.size();
     }
-
-
-    public Context getContext() {
-        return mContext;
-    }
-
-    public void setOnItemClickListener(AbsRVHolder.OnItemClickListener clickListener) {
-        mItemClickListener = clickListener;
-    }
-
-    public void setOnItemLongClickListener(AbsRVHolder.OnItemLongClickListener longClickListener) {
-        mItemLongClickListener = longClickListener;
-    }
-
 }

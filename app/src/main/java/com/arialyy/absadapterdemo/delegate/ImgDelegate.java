@@ -1,13 +1,13 @@
-package com.arialyy.absadapterdemo.listview;
+package com.arialyy.absadapterdemo.delegate;
 
 import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.arialyy.absadapter.delegate.listview.AbsLvDAdapter;
-import com.arialyy.absadapter.delegate.listview.AbsLvDelegation;
-import com.arialyy.absadapter.listview.AbsLvHolder;
+import com.arialyy.absadapter.delegate.AbsDelegation;
+import com.arialyy.absadapter.common.AbsHolder;
+import com.arialyy.absadapter.delegate.AbsIAdapter;
 import com.arialyy.absadapterdemo.R;
 import com.arialyy.absadapterdemo.entity.ImgEntity;
 
@@ -16,10 +16,9 @@ import butterknife.InjectView;
 /**
  * Created by lyy on 2016/5/30.
  */
-public class LvImgDelegate extends AbsLvDelegation<ImgEntity, LvImgDelegate.LVImgHolder> {
+public class ImgDelegate extends AbsDelegation<ImgEntity, ImgDelegate.LVImgHolder> {
 
-
-    protected LvImgDelegate(Context context, AbsLvDAdapter adapter, int itemType) {
+    public ImgDelegate(Context context, AbsIAdapter adapter, int itemType) {
         super(context, adapter, itemType);
     }
 
@@ -35,10 +34,10 @@ public class LvImgDelegate extends AbsLvDelegation<ImgEntity, LvImgDelegate.LVIm
 
     @Override
     public int setLayoutId() {
-        return R.layout.layout_item_img;
+        return R.layout.item_img;
     }
 
-    public class LVImgHolder extends AbsLvHolder {
+    public class LVImgHolder extends AbsHolder {
         @InjectView(R.id.img)
         ImageView img;
         @InjectView(R.id.text)

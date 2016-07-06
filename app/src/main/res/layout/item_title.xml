@@ -6,6 +6,7 @@
               android:paddingBottom="8dp"
               android:paddingLeft="16dp"
               android:paddingRight="16dp"
+              android:background="@drawable/selector_item_bg"
               android:paddingTop="8dp">
 
     <ImageView

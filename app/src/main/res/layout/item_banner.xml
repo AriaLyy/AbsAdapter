@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              android:layout_width="match_parent"
-              android:layout_height="160dp"
-              android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:orientation="vertical">
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vp"
         android:layout_width="match_parent"
-        android:layout_height="160dp"/>
+        android:layout_height="160dp" />
 
     <com.arialyy.absadapterdemo.widget.CircleIndicator
         android:id="@+id/indicator"
@@ -16,8 +16,7 @@
         android:layout_height="20dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
         app:ci_drawable="@drawable/yellow_radius"
-        app:ci_drawable_unselected="@drawable/white_radius"/>
+        app:ci_drawable_unselected="@drawable/white_radius" />
 
-</LinearLayout>
+</RelativeLayout>
