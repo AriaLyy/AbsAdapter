@@ -34,7 +34,7 @@ public abstract class AbsRvDAdapter<T extends AbsDEntity> extends RecyclerView.A
     protected String TAG;
     protected List<T> mData = new ArrayList<>();
     protected Context mContext;
-    protected AbsDManager mManager = new AbsDManager();
+    private AbsDManager mManager = new AbsDManager();
 
     public AbsRvDAdapter(Context context, List<T> data) {
         mData = data;
@@ -57,6 +57,11 @@ public abstract class AbsRvDAdapter<T extends AbsDEntity> extends RecyclerView.A
         View view = LayoutInflater.from(parent.getContext()).inflate(delegation.setLayoutId(), parent, false);
         holder = delegation.createHolder(view);
         return holder;
+    }
+
+    @Override
+    public AbsDManager getManager() {
+        return mManager;
     }
 
     @Override

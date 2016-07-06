@@ -20,10 +20,10 @@ import java.util.List;
 public class RvAdapter_2 extends AbsRvDAdapter<AbsDEntity> {
     public RvAdapter_2(Context context, List<AbsDEntity> data, FragmentManager fm) {
         super(context, data);
-        mManager.addDelegate(new BannerDelegate(context, this, Constance.ADAPTER_TYPE.TYPE_BANNER, fm));
-        mManager.addDelegate(new RvGameDetailDelegate(context, this, Constance.ADAPTER_TYPE.TYPE_GAME_DETAIL));
-        mManager.addDelegate(new RvGameNotifyDelegate(context, this, Constance.ADAPTER_TYPE.TYPE_NOTIFY));
-        mManager.addDelegate(new TextDelegate(context, this, Constance.ADAPTER_TYPE.TYPE_TEXT));
-        mManager.addDelegate(new ImgDelegate(context, this, Constance.ADAPTER_TYPE.TYPE_IMG));
+        getManager().addDelegate(new BannerDelegate(context, this, Constance.ADAPTER_TYPE.TYPE_BANNER, fm));
+        getManager().addDelegate(new RvGameDetailDelegate(context, this, Constance.ADAPTER_TYPE.TYPE_GAME_DETAIL));
+        getManager().addDelegate(new RvGameNotifyDelegate(context, this, Constance.ADAPTER_TYPE.TYPE_NOTIFY));
+        getManager().addDelegate(new TextDelegate(context, this, Constance.ADAPTER_TYPE.TYPE_TEXT));
+        getManager().addDelegate(new ImgDelegate(context, this, Constance.ADAPTER_TYPE.TYPE_IMG));
     }
 }

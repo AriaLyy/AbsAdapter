@@ -23,6 +23,12 @@ import java.util.List;
  * Created by lyy on 2016/7/6.
  */
 public interface AbsIAdapter<T extends AbsDEntity> {
+
+    /**
+     * get manager
+     */
+    public AbsDManager getManager();
+
     /**
      * get list data
      *
