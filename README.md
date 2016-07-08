@@ -9,6 +9,7 @@ AbsAdapter 是一个积木化的Adapter </br>
 * 使用AbsAdapter，Adapter的代码将变得很简洁
 * 最关键的是，每一个item样式可以被ListView 或 RecyclerView 共用，而不需要修改任何逻辑
 
+----
 - [用例](#用例)
 - [使用](#使用)
 - [RecyclerView点击事件](#点击事件)
