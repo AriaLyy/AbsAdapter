@@ -3,6 +3,7 @@ package com.arialyy.absadapterdemo.fragment;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.arialyy.absadapter.delegate.AbsDEntity;
@@ -67,6 +68,12 @@ public class RvFragment extends BaseFragment<FragmentRvBinding> {
             }
         });
 
+        RvItemClickSupport.addTo(mList).setOnItemTouchListener(new RvItemClickSupport.OnItemTouchListener() {
+            @Override
+            public void onTouchEvent(RecyclerView rv, MotionEvent e, int position, View v) {
+
+            }
+        });
         if (mType == 0) {
             getModule(DataModule.class).getData_1();
         } else if (mType == 1) {

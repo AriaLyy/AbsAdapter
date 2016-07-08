@@ -19,5 +19,4 @@ public class RvAdapter_3 extends AbsRvDAdapter {
         getManager().addDelegate(new RvGameDetailDelegate(context, this, Constance.ADAPTER_TYPE.TYPE_GAME_DETAIL));
         getManager().addDelegate(new RvGameNotifyDelegate(context, this, Constance.ADAPTER_TYPE.TYPE_NOTIFY));
     }
-
 }
