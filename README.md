@@ -5,8 +5,8 @@ AbsAdapter 是一个积木化的Adapter </br>
 
 * 使用AbsAdapter，不同样式的Item将可以自由组合
 * 使用AbsAdapter，每个Item样式都将被抽离出来
-* 使用AbsAdapter，将来需要增加或减少样式将变得极其简单
-* 使用AbsAdapter，Adapter的代码将及其简洁
+* 使用AbsAdapter，将来需要增加或减少样式将变得很简单
+* 使用AbsAdapter，Adapter的代码将变得很简洁
 * 最关键的是，每一个item样式可以被ListView 或 RecyclerView 共用，而不需要修改任何逻辑
 
 - [用例](#用例)
@@ -16,10 +16,10 @@ AbsAdapter 是一个积木化的Adapter </br>
 ----
 * 如果你觉得我的代码对你有帮助，请麻烦您在右上角给我一个`star`.^_^
 * 如过你对我的代码有任何疑问或者发现任何bug，麻烦您在[issues](https://github.com/AriaLyy/AbsAdapter/issues)告诉我^_^
+
 ## 用例
 
 * TestAdapter_1
-
 ```java
 public class RvAdapter_1 extends AbsRvDAdapter<AbsDEntity> {
     public RvAdapter_1(Context context, List<AbsDEntity> data, FragmentManager fm) {
@@ -32,7 +32,6 @@ public class RvAdapter_1 extends AbsRvDAdapter<AbsDEntity> {
 ```
 
 * TestAdapter_2
-
 ```java
 public class RvAdapter_2 extends AbsRvDAdapter<AbsDEntity> {
     public RvAdapter_2(Context context, List<AbsDEntity> data, FragmentManager fm) {
@@ -47,7 +46,6 @@ public class RvAdapter_2 extends AbsRvDAdapter<AbsDEntity> {
 ```
 
 * TestAdapter_3
-
 ```java
 public class RvAdapter_3 extends AbsRvDAdapter {
     public RvAdapter_3(Context context, List data) {
@@ -77,6 +75,7 @@ public class GameDetailEntity extends AbsDEntity{
 2. 重写getAbsType方法，将返回值设置Item的type.
 
 3. 创建一个Item样式，每一个Item样式都有独立的 Holder，因此，你还需要创建相应的Holder
+
 ```java
 /**
  *  创建
@@ -91,7 +90,7 @@ public class TextDelegate extends AbsDelegation<TextEntity, TextDelegate.LvTextH
     public LvTextHolder createHolder(View convertView) {
         return new LvTextHolder(convertView);
     }
-    
+
     /**
      * 绑定你的数据
      */
@@ -105,7 +104,7 @@ public class TextDelegate extends AbsDelegation<TextEntity, TextDelegate.LvTextH
     public int setLayoutId() {
         return R.layout.item_text;      //在这设置布局id
     }
-    
+
     /**
      * 创建相应的Holder
      */
@@ -127,6 +126,7 @@ public class TextDelegate extends AbsDelegation<TextEntity, TextDelegate.LvTextH
 1、如果你的列表是ListView，你需要继承`AbsLvDAdapter` </br>
 2、如果你的列表是RecyclerView，你需要继承`AbsRvDAdapter` </br>
 3、`AbsLvDAdapter` 或者 `AbsRvDAdapter` 可以共用一个Item样式
+
 ```java
 /**
  * RecyclverView  的Adapter
