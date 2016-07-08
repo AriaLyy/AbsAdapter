@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
    Copyright (C) 2014 Lucas Rocha
 
    Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +15,5 @@
 -->
 
 <resources>
-
-    <item name="twowayview_item_click_support" type="id"/>
-    <item name="twowayview_item_selection_support" type="id"/>
-
+    <item name="item_click_support" type="id" />
 </resources>

@@ -4,12 +4,11 @@ import android.content.Context;
 import android.support.v4.app.FragmentManager;
 
 import com.arialyy.absadapter.delegate.AbsDEntity;
-import com.arialyy.absadapter.delegate.recycler_view.AbsRvDAdapter;
-import com.arialyy.absadapter.recycler_view.AbsRVAdapter;
+import com.arialyy.absadapter.delegate.AbsRvDAdapter;
 import com.arialyy.absadapterdemo.Constance;
-import com.arialyy.absadapterdemo.recycle_view.delegate.RvBannerDelegate;
-import com.arialyy.absadapterdemo.recycle_view.delegate.RvGameDetailDelegate;
-import com.arialyy.absadapterdemo.recycle_view.delegate.RvGameNotifyDetegate;
+import com.arialyy.absadapterdemo.delegate.BannerDelegate;
+import com.arialyy.absadapterdemo.delegate.RvGameDetailDelegate;
+import com.arialyy.absadapterdemo.delegate.RvGameNotifyDelegate;
 
 import java.util.List;
 
@@ -19,8 +18,8 @@ import java.util.List;
 public class RvAdapter_1 extends AbsRvDAdapter<AbsDEntity> {
     public RvAdapter_1(Context context, List<AbsDEntity> data, FragmentManager fm) {
         super(context, data);
-        mManager.addDelegate(new RvBannerDelegate(context, this, Constance.ADAPTER_TYPE.TYPE_BANNER, fm));
-        mManager.addDelegate(new RvGameDetailDelegate(context, this, Constance.ADAPTER_TYPE.TYPE_GAME_DETAIL));
-        mManager.addDelegate(new RvGameNotifyDetegate(context, this, Constance.ADAPTER_TYPE.TYPE_NOTIFY));
+        getManager().addDelegate(new BannerDelegate(context, this, Constance.ADAPTER_TYPE.TYPE_BANNER, fm));
+        getManager().addDelegate(new RvGameDetailDelegate(context, this, Constance.ADAPTER_TYPE.TYPE_GAME_DETAIL));
+        getManager().addDelegate(new RvGameNotifyDelegate(context, this, Constance.ADAPTER_TYPE.TYPE_NOTIFY));
     }
 }

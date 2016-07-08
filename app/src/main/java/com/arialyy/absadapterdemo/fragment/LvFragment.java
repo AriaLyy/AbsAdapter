@@ -1,22 +1,20 @@
 package com.arialyy.absadapterdemo.fragment;
 
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import com.arialyy.absadapter.delegate.AbsDEntity;
-import com.arialyy.absadapter.delegate.AbsRvDAdapter;
-import com.arialyy.absadapter.help.RvItemClickSupport;
+import com.arialyy.absadapter.delegate.AbsLvDAdapter;
 import com.arialyy.absadapterdemo.Constance;
 import com.arialyy.absadapterdemo.R;
 import com.arialyy.absadapterdemo.base.BaseFragment;
 import com.arialyy.absadapterdemo.databinding.FragmentRvBinding;
+import com.arialyy.absadapterdemo.listview.LvAdapter_1;
+import com.arialyy.absadapterdemo.listview.LvAdapter_2;
+import com.arialyy.absadapterdemo.listview.LvAdapter_3;
 import com.arialyy.absadapterdemo.module.DataModule;
-import com.arialyy.absadapterdemo.recycle_view.RvAdapter_1;
-import com.arialyy.absadapterdemo.recycle_view.RvAdapter_2;
-import com.arialyy.absadapterdemo.recycle_view.RvAdapter_3;
 import com.arialyy.frame.util.show.T;
 
 import java.util.ArrayList;
@@ -27,16 +25,16 @@ import butterknife.InjectView;
 /**
  * Created by lyy on 2016/7/5.
  */
-public class RvFragment extends BaseFragment<FragmentRvBinding> {
+public class LvFragment extends BaseFragment<FragmentRvBinding> {
     @InjectView(R.id.list)
-    RecyclerView mList;
+    ListView mList;
     List<AbsDEntity> mData = new ArrayList<>();
-    AbsRvDAdapter mAdapter;
+    AbsLvDAdapter mAdapter;
     int mType = 0;
 
-    public static RvFragment newInstance(int type) {
+    public static LvFragment newInstance(int type) {
         Bundle args = new Bundle();
-        RvFragment fragment = new RvFragment();
+        LvFragment fragment = new LvFragment();
         args.putInt(Constance.KEY.RV_ITEM_TYPE, type);
         fragment.setArguments(args);
         return fragment;
@@ -44,7 +42,7 @@ public class RvFragment extends BaseFragment<FragmentRvBinding> {
 
     @Override
     protected int setLayoutId() {
-        return R.layout.fragment_rv;
+        return R.layout.fragment_lv;
     }
 
     @Override
@@ -52,26 +50,19 @@ public class RvFragment extends BaseFragment<FragmentRvBinding> {
         super.init(savedInstanceState);
         mType = getArguments().getInt(Constance.KEY.RV_ITEM_TYPE);
         if (mType == 0) {
-            mAdapter = new RvAdapter_1(getContext(), mData, getChildFragmentManager());
+            mAdapter = new LvAdapter_1(getContext(), mData, getChildFragmentManager());
         } else if (mType == 1) {
-            mAdapter = new RvAdapter_2(getContext(), mData, getChildFragmentManager());
+            mAdapter = new LvAdapter_2(getContext(), mData, getChildFragmentManager());
         } else if (mType == 2) {
-            mAdapter = new RvAdapter_3(getContext(), mData);
+            mAdapter = new LvAdapter_3(getContext(), mData);
         }
         if (mAdapter == null) return;
-        mList.setLayoutManager(new LinearLayoutManager(getContext()));
+
         mList.setAdapter(mAdapter);
-        RvItemClickSupport.addTo(mList).setOnItemClickListener(new RvItemClickSupport.OnItemClickListener() {
+        mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 T.showShort(getContext(), "position: " + position);
-            }
-        });
-
-        RvItemClickSupport.addTo(mList).setOnItemTouchListener(new RvItemClickSupport.OnItemTouchListener() {
-            @Override
-            public void onTouchEvent(RecyclerView rv, MotionEvent e, int position, View v) {
-
             }
         });
         if (mType == 0) {

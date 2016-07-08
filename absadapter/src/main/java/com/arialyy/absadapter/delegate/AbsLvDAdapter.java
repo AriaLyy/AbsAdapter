@@ -1,4 +1,19 @@
-package com.arialyy.absadapter.delegate.listview;
+/*
+ * Copyright (C) 2016 AriaLyy(AbsAdapter)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.arialyy.absadapter.delegate;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,10 +21,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.arialyy.absadapter.AbsUtil;
-import com.arialyy.absadapter.delegate.AbsDEntity;
-import com.arialyy.absadapter.delegate.AbsDManager;
-import com.arialyy.absadapter.listview.AbsLvHolder;
+import com.arialyy.absadapter.common.AbsUtil;
+import com.arialyy.absadapter.common.AbsHolder;
 
 import java.util.List;
 
@@ -17,11 +30,11 @@ import java.util.List;
  * Created by lyy on 2016/3/28.
  * 处理含有多个ViewType的Adapter使用
  */
-public abstract class AbsLvDAdapter<T extends AbsDEntity> extends BaseAdapter {
-    private   LayoutInflater mInflater;
-    protected List<T>        mData;
-    private   Context        mContext;
-    protected AbsDManager mManager = new AbsDManager();
+public abstract class AbsLvDAdapter<T extends AbsDEntity> extends BaseAdapter implements AbsIAdapter<T> {
+    private LayoutInflater mInflater;
+    protected List<T> mData;
+    private Context mContext;
+    private AbsDManager mManager = new AbsDManager();
     private String TAG;
 
     public AbsLvDAdapter(Context context, List<T> data) {
@@ -31,11 +44,18 @@ public abstract class AbsLvDAdapter<T extends AbsDEntity> extends BaseAdapter {
         TAG = AbsUtil.getClassName(this);
     }
 
+    @Override
+    public AbsDManager getManager() {
+        return mManager;
+    }
+
+    @Override
     public List<T> getData() {
         return mData;
     }
 
-    protected Context getContext() {
+    @Override
+    public Context getContext() {
         return mContext;
     }
 
@@ -66,9 +86,9 @@ public abstract class AbsLvDAdapter<T extends AbsDEntity> extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        AbsLvHolder      holder;
-        int              type       = getItemViewType(position);
-        AbsILvDelegation delegation = (AbsILvDelegation) mManager.getDelegate(type);
+        AbsHolder holder;
+        int type = getItemViewType(position);
+        AbsIDelegation delegation = mManager.getDelegate(type);
         if (delegation == null) {
             throw new NullPointerException("没有type == " + type + "的Delegate");
         }
@@ -77,7 +97,7 @@ public abstract class AbsLvDAdapter<T extends AbsDEntity> extends BaseAdapter {
             holder = delegation.createHolder(convertView);
             convertView.setTag(holder);
         } else {
-            holder = (AbsLvHolder) convertView.getTag();
+            holder = (AbsHolder) convertView.getTag();
         }
         delegation.bindData(position, holder, mData.get(position));
         return convertView;

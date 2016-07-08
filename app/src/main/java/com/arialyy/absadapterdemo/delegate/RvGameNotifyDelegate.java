@@ -1,13 +1,13 @@
-package com.arialyy.absadapterdemo.recycle_view.delegate;
+package com.arialyy.absadapterdemo.delegate;
 
 import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.arialyy.absadapter.delegate.recycler_view.AbsRvDAdapter;
-import com.arialyy.absadapter.delegate.recycler_view.AbsRvDelegation;
-import com.arialyy.absadapter.recycler_view.AbsRVHolder;
+import com.arialyy.absadapter.delegate.AbsDelegation;
+import com.arialyy.absadapter.delegate.AbsIAdapter;
+import com.arialyy.absadapter.common.AbsHolder;
 import com.arialyy.absadapterdemo.R;
 import com.arialyy.absadapterdemo.entity.GameNotifyEntity;
 import com.bumptech.glide.Glide;
@@ -17,9 +17,9 @@ import butterknife.InjectView;
 /**
  * Created by lyy on 2016/6/21.
  */
-public class RvGameNotifyDetegate extends AbsRvDelegation<GameNotifyEntity, RvGameNotifyDetegate.GameNotifyHolder> {
+public class RvGameNotifyDelegate extends AbsDelegation<GameNotifyEntity, RvGameNotifyDelegate.GameNotifyHolder> {
 
-    public RvGameNotifyDetegate(Context context, AbsRvDAdapter adapter, int itemType) {
+    public RvGameNotifyDelegate(Context context, AbsIAdapter adapter, int itemType) {
         super(context, adapter, itemType);
     }
 
@@ -41,7 +41,7 @@ public class RvGameNotifyDetegate extends AbsRvDelegation<GameNotifyEntity, RvGa
         return R.layout.item_game_notify;
     }
 
-    class GameNotifyHolder extends AbsRVHolder {
+    class GameNotifyHolder extends AbsHolder {
         @InjectView(R.id.img)
         ImageView img;
         @InjectView(R.id.game_img)

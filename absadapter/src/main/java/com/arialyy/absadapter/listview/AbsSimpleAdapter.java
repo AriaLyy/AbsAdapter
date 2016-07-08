@@ -1,3 +1,18 @@
+/*
+ * Copyright (C) 2016 AriaLyy(AbsAdapter)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.arialyy.absadapter.listview;
 
 import android.content.Context;
@@ -16,32 +31,20 @@ import java.util.List;
  */
 public abstract class AbsSimpleAdapter<T> extends BaseAdapter {
     /**
-     * 请求码
-     */
-    protected int mRequestCode;
-    /**
-     * 返回码
-     */
-    protected int mResultCode;
-    /**
      * 监听
      */
-    protected AbsOnAdapterListener mListener;
     protected LayoutInflater mInflater;
     protected Context mContext;
     protected List<T> mData;
     protected final int mItemLayoutId;
     protected int mCurrentPosition = -1;
     protected int mCurrentSelectPosition = -1;
-    private int mSelectedColor = Color.parseColor("#afbfff");
-    private int mEnSelectedColor = Color.parseColor("#ffffff");
 
     public AbsSimpleAdapter(Context context, List<T> mData, int itemLayoutId) {
         this.mContext = context;
         this.mInflater = LayoutInflater.from(mContext);
         this.mData = mData;
         this.mItemLayoutId = itemLayoutId;
-        int i = 0;
         pre();
     }
 
@@ -90,19 +93,9 @@ public abstract class AbsSimpleAdapter<T> extends BaseAdapter {
      * @param parent
      * @return
      */
-    private AbsSimpleViewHolder getViewHolder(int position, View convertView,
-                                              ViewGroup parent) {
+    private AbsSimpleViewHolder getViewHolder(int position, View convertView, ViewGroup parent) {
         return AbsSimpleViewHolder.getViewHolder(mContext, convertView, parent, mItemLayoutId,
                 position);
-    }
-
-    /**
-     * 设置Adapter监听
-     *
-     * @param mListener
-     */
-    public void setOnMyAdapterListener(AbsOnAdapterListener mListener) {
-        this.mListener = mListener;
     }
 
     /**

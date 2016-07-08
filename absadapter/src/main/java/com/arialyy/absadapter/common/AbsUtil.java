@@ -13,20 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.arialyy.absadapter.delegate;
+package com.arialyy.absadapter.common;
 
 /**
  * Created by lyy on 2016/5/30.
  */
-public class AbsDEntity {
+public class AbsUtil {
 
-    protected int absType;
-
-    public int getAbsType() {
-        return absType;
-    }
-
-    public void setAbsType(int absType) {
-        this.absType = absType;
+    public static String getClassName(Object obj) {
+        String arrays[] = obj.getClass().getName().split("\\.");
+        return arrays[arrays.length - 1];
     }
 }
