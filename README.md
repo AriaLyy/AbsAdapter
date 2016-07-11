@@ -60,7 +60,7 @@ public class RvAdapter_3 extends AbsRvDAdapter {
     }
 }
 ```
-![test.png](http://upload-images.jianshu.io/upload_images/1824042-f8a7c90d942fb016.png)
+![test.png](https://github.com/AriaLyy/AbsAdapter/blob/master/img/img.png)
 
 > 如上图及代码所示，在Adapter 里面 item样式 可以像积木一样被自由组合并且可以随意增加或减少
 
