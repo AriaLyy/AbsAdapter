@@ -19,7 +19,7 @@ AbsAdapter 是一个积木化的Adapter </br>
 * 如过你对我的代码有任何疑问或者发现任何bug，麻烦您在[issues](https://github.com/AriaLyy/AbsAdapter/issues)告诉我^_^
 
 ## lib
-compile 'com.jakewharton:butterknife:6.1.0'
+compile 'com.jakewharton:butterknife:6.1.0' </br>
 compile 'com.arialyy.absadapter:AbsAdapter:1.0.3'
 
 ## 用例
