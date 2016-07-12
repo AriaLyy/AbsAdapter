@@ -9,4 +9,5 @@
 /app/build
 /absadapter/build
 /absadapter/gradle.properties
+/cache
 
