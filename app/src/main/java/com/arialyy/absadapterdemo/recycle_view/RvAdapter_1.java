@@ -18,8 +18,12 @@ import java.util.List;
 public class RvAdapter_1 extends AbsRvDAdapter<AbsDEntity> {
     public RvAdapter_1(Context context, List<AbsDEntity> data, FragmentManager fm) {
         super(context, data);
-        getManager().addDelegate(new BannerDelegate(context, this, Constance.ADAPTER_TYPE.TYPE_BANNER, fm));
-        getManager().addDelegate(new RvGameDetailDelegate(context, this, Constance.ADAPTER_TYPE.TYPE_GAME_DETAIL));
-        getManager().addDelegate(new RvGameNotifyDelegate(context, this, Constance.ADAPTER_TYPE.TYPE_NOTIFY));
+//        getManager().addDelegate(new BannerDelegate(context, this, Constance.ADAPTER_TYPE.TYPE_BANNER, fm));
+//        getManager().addDelegate(new RvGameDetailDelegate(context, this, Constance.ADAPTER_TYPE.TYPE_GAME_DETAIL));
+//        getManager().addDelegate(new RvGameNotifyDelegate(context, this, Constance.ADAPTER_TYPE.TYPE_NOTIFY));
+
+        getManager().addDelegate(new BannerDelegate(context, this,  fm));
+        getManager().addDelegate(new RvGameDetailDelegate(context, this));
+        getManager().addDelegate(new RvGameNotifyDelegate(context, this));
     }
 }

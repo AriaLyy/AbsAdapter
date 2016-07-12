@@ -15,6 +15,8 @@
  */
 package com.arialyy.absadapter.delegate;
 
+import com.arialyy.absadapter.core.AbsHelp;
+
 /**
  * Created by lyy on 2016/5/30.
  */
@@ -23,7 +25,8 @@ public class AbsDEntity {
     protected int absType;
 
     public int getAbsType() {
-        return absType;
+//        return absType;
+        return AbsHelp.getINSTANCE().getType(getClass());
     }
 
     public void setAbsType(int absType) {

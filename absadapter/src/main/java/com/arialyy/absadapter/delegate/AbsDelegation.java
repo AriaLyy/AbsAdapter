@@ -17,9 +17,13 @@ package com.arialyy.absadapter.delegate;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.arialyy.absadapter.common.AbsUtil;
 import com.arialyy.absadapter.common.AbsHolder;
+import com.arialyy.absadapter.core.AbsHelp;
 import com.arialyy.absadapter.recycler_view.AbsRVAdapter;
 
 /**
@@ -27,13 +31,11 @@ import com.arialyy.absadapter.recycler_view.AbsRVAdapter;
  * Delegation基类
  */
 public abstract class AbsDelegation<T extends AbsDEntity, H extends AbsHolder> implements AbsIDelegation<T, H> {
-    private int mItemType;
     private Context mContext;
     private AbsIAdapter mAdapter;
     private String TAG;
 
-    public AbsDelegation(Context context, AbsIAdapter adapter, int itemType) {
-        mItemType = itemType;
+    public AbsDelegation(Context context, AbsIAdapter adapter) {
         mContext = context;
         mAdapter = adapter;
         TAG = AbsUtil.getClassName(this);
@@ -41,6 +43,12 @@ public abstract class AbsDelegation<T extends AbsDEntity, H extends AbsHolder> i
 
     public AbsIAdapter getAdapter() {
         return mAdapter;
+    }
+
+    @Override
+    public H createViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(setLayoutId(), parent, false);
+        return createHolder(view);
     }
 
     @Override
@@ -67,6 +75,6 @@ public abstract class AbsDelegation<T extends AbsDEntity, H extends AbsHolder> i
 
     @Override
     public int getItemViewType() {
-        return mItemType;
+        return AbsHelp.getINSTANCE().getType(getClass());
     }
 }

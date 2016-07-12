@@ -10,4 +10,4 @@
 /absadapter/build
 /absadapter/gradle.properties
 /cache
-
+/adapter-core/target

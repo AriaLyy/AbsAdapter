@@ -16,6 +16,7 @@
 package com.arialyy.absadapter.delegate;
 
 import android.view.View;
+import android.view.ViewGroup;
 
 import com.arialyy.absadapter.common.AbsHolder;
 
@@ -23,6 +24,7 @@ import com.arialyy.absadapter.common.AbsHolder;
  * Created by lyy on 2016/5/30.
  */
 interface AbsIDelegation<T, H extends AbsHolder> {
+
     /**
      * 更新
      */
@@ -61,6 +63,11 @@ interface AbsIDelegation<T, H extends AbsHolder> {
      * @return
      */
     public H createHolder(View convertView);
+
+    /**
+     * 创建ViewHolder
+     */
+    public H createViewHolder(ViewGroup parent, int viewType);
 
     /**
      * 绑定数据

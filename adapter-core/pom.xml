@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>groupId</groupId>
+    <artifactId>AbsAdapter-core</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+
+    <!--<dependencies>-->
+        <!--<dependency>-->
+            <!--<groupId>org.json</groupId>-->
+            <!--<artifactId>json</artifactId>-->
+            <!--<version>1.0</version>-->
+            <!--<scope>system</scope>-->
+            <!--<systemPath>${project.basedir}/lib/json-2.1.jar</systemPath>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>net.sf.proguard</groupId>-->
+            <!--<artifactId>proguard-base</artifactId>-->
+            <!--<version>5.0</version>-->
+            <!--<scope>runtime</scope>-->
+        <!--</dependency>-->
+    <!--</dependencies>-->
+
+    <build>
+        <plugins>
+            <!--打jar包插件-->
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                    <!-- Disable annotation processing for ourselves.-->
+                    <compilerArgument>-proc:none</compilerArgument>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <!--混淆插件-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-shade-plugin</artifactId>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<phase>package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>shade</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<transformers>-->
+                                <!--<transformer-->
+                                        <!--implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">-->
+                                    <!--<mainClass>com.yunshouhu.apkprotect.MainHelper</mainClass>-->
+                                <!--</transformer>-->
+                            <!--</transformers>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
+            <!--<plugin>-->
+                <!--<groupId>com.github.wvengen</groupId>-->
+                <!--<artifactId>proguard-maven-plugin</artifactId>-->
+                <!--<version>2.0.11</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<phase>package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>proguard</goal>-->
+                        <!--</goals>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+                <!--<configuration>-->
+                    <!--<obfuscate>true</obfuscate>-->
+                    <!--<proguardInclude>${basedir}/proguard.cfg</proguardInclude>-->
+                    <!--<attach>true</attach>-->
+                    <!--<attachArtifactClassifier>proguard</attachArtifactClassifier>-->
+                    <!--&lt;!&ndash;<libs>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<lib>${project.basedir}/lib/rt.jar</lib>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</libs>&ndash;&gt;-->
+                <!--</configuration>-->
+
+            <!--</plugin>-->
+        </plugins>
+    </build>
+</project>

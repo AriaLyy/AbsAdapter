@@ -49,14 +49,11 @@ public abstract class AbsRvDAdapter<T extends AbsDEntity> extends RecyclerView.A
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        AbsHolder holder;
         AbsIDelegation delegation = mManager.getDelegate(viewType);
         if (delegation == null) {
             throw new NullPointerException("没有type == " + viewType + "的Delegate");
         }
-        View view = LayoutInflater.from(parent.getContext()).inflate(delegation.setLayoutId(), parent, false);
-        holder = delegation.createHolder(view);
-        return holder;
+        return delegation.createViewHolder(parent, viewType);
     }
 
     @Override
@@ -79,7 +76,7 @@ public abstract class AbsRvDAdapter<T extends AbsDEntity> extends RecyclerView.A
         int type = getItemViewType(position);
         AbsIDelegation delegation = mManager.getDelegate(type);
         if (delegation == null) {
-            throw new NullPointerException("没有type == " + type + "的Delegate");
+            throw new NullPointerException("没有type == " + type + "，的Delegate");
         }
         if (holder instanceof AbsHolder) {
             delegation.bindData(position, (AbsHolder) holder, mData.get(position));

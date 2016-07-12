@@ -26,8 +26,8 @@ import butterknife.InjectView;
 public class BannerDelegate extends AbsDelegation<DBannerEntity, BannerDelegate.BannerHolder> {
     FragmentManager mFm;
 
-    public BannerDelegate(Context context, AbsIAdapter adapter, int itemType, FragmentManager fm) {
-        super(context, adapter, itemType);
+    public BannerDelegate(Context context, AbsIAdapter adapter, FragmentManager fm) {
+        super(context, adapter);
         mFm = fm;
     }
 

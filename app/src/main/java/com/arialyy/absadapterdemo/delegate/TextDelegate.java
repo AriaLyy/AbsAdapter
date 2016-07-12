@@ -17,8 +17,8 @@ import butterknife.InjectView;
  */
 public class TextDelegate extends AbsDelegation<TextEntity, TextDelegate.LvTextHolder> {
 
-    public TextDelegate(Context context, AbsIAdapter adapter, int itemType) {
-        super(context, adapter, itemType);
+    public TextDelegate(Context context, AbsIAdapter adapter) {
+        super(context, adapter);
     }
 
     @Override

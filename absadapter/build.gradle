@@ -25,6 +25,7 @@ dependencies {
     compile 'com.android.support:design:23.2.1'
     compile 'com.android.support:appcompat-v7:23.2.1'
     compile 'com.jakewharton:butterknife:6.1.0'
+    compile files('libs/AbsAdapter-core-1.0.jar')
 }
 
 //apply from: 'jcenter.gradle'

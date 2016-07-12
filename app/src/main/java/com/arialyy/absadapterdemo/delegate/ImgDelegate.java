@@ -18,8 +18,8 @@ import butterknife.InjectView;
  */
 public class ImgDelegate extends AbsDelegation<ImgEntity, ImgDelegate.LVImgHolder> {
 
-    public ImgDelegate(Context context, AbsIAdapter adapter, int itemType) {
-        super(context, adapter, itemType);
+    public ImgDelegate(Context context, AbsIAdapter adapter) {
+        super(context, adapter);
     }
 
     @Override
