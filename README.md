@@ -75,7 +75,7 @@ public class RvAdapter_3 extends AbsRvDAdapter<AbsDEntity> {
 > 如上图及代码所示，在Adapter 里面 item样式 可以像积木一样被自由组合并且可以随意增加或减少
 
 ## 使用
-1. 创建一个实体，并继承AsbDEntity，然后通过`@AbsType`注解，让实体和Delegate绑定。</br>
+1、 创建一个实体，并继承AsbDEntity，然后通过`@AbsType`注解，让实体和Delegate绑定。</br>
 ps：实体和Delegate是通过编译时的注解绑定的，使用AbsType注解，不会影响你列表的性能。
 ```java
 @AbsType(type = Constance.ADAPTER_TYPE.TYPE_GAME_DETAIL, delegate = GameDetailDelegate.class)
@@ -86,7 +86,7 @@ public class GameDetailEntity extends AbsDEntity{
 }
 ```
 
-2. 创建一个Item样式，每一个Item样式都有独立的 Holder，因此，你还需要创建相应的Holder
+2、 创建一个Item样式，每一个Item样式都有独立的 Holder，因此，你还需要创建相应的Holder
 ```java
 /**
  *  创建
@@ -133,7 +133,8 @@ public class TextDelegate extends AbsDelegation<TextEntity, TextDelegate.LvTextH
 ```
 现在，你已经拥有了一个模块化的Item
 
-3. 创建ListView Adapter 或者 RecyclerView Adapter
+3、 创建ListView Adapter 或者 RecyclerView Adapter
+
 注意 ：</br>
 * 如果你的列表是ListView，你需要继承`AbsLvDAdapter` </br>
 * 如果你的列表是RecyclerView，你需要继承`AbsRvDAdapter` </br>
