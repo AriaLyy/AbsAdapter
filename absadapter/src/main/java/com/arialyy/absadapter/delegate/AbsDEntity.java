@@ -25,7 +25,6 @@ public class AbsDEntity {
     protected int absType;
 
     public int getAbsType() {
-//        return absType;
         return AbsHelp.getINSTANCE().getType(getClass());
     }
 
