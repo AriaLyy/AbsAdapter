@@ -3,9 +3,8 @@ package com.arialyy.absadapterdemo.recycle_view;
 import android.content.Context;
 
 import com.arialyy.absadapter.delegate.AbsRvDAdapter;
-import com.arialyy.absadapterdemo.Constance;
-import com.arialyy.absadapterdemo.delegate.RvGameDetailDelegate;
-import com.arialyy.absadapterdemo.delegate.RvGameNotifyDelegate;
+import com.arialyy.absadapterdemo.delegate.GameDetailDelegate;
+import com.arialyy.absadapterdemo.delegate.GameNotifyDelegate;
 
 import java.util.List;
 
@@ -16,7 +15,7 @@ public class RvAdapter_3 extends AbsRvDAdapter {
 
     public RvAdapter_3(Context context, List data) {
         super(context, data);
-        getManager().addDelegate(new RvGameDetailDelegate(context, this));
-        getManager().addDelegate(new RvGameNotifyDelegate(context, this));
+        getManager().addDelegate(new GameDetailDelegate(context, this));
+        getManager().addDelegate(new GameNotifyDelegate(context, this));
     }
 }

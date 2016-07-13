@@ -19,9 +19,9 @@ import butterknife.InjectView;
 /**
  * Created by lyy on 2016/6/21.
  */
-public class RvGameDetailDelegate extends AbsDelegation<GameDetailEntity, RvGameDetailDelegate.GameDetailHolder> {
+public class GameDetailDelegate extends AbsDelegation<GameDetailEntity, GameDetailDelegate.GameDetailHolder> {
 
-    public RvGameDetailDelegate(Context context, AbsIAdapter adapter) {
+    public GameDetailDelegate(Context context, AbsIAdapter adapter) {
         super(context, adapter);
     }
 

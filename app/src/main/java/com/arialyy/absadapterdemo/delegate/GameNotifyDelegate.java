@@ -17,8 +17,8 @@ import butterknife.InjectView;
 /**
  * Created by lyy on 2016/6/21.
  */
-public class RvGameNotifyDelegate extends AbsDelegation<GameNotifyEntity, RvGameNotifyDelegate.GameNotifyHolder> {
-    public RvGameNotifyDelegate(Context context, AbsIAdapter adapter) {
+public class GameNotifyDelegate extends AbsDelegation<GameNotifyEntity, GameNotifyDelegate.GameNotifyHolder> {
+    public GameNotifyDelegate(Context context, AbsIAdapter adapter) {
         super(context, adapter);
     }
 
