@@ -28,4 +28,4 @@ dependencies {
     compile files('libs/AbsAdapter-core-1.0.jar')
 }
 
-//apply from: 'jcenter.gradle'
+apply from: 'jcenter.gradle'

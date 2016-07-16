@@ -20,10 +20,10 @@ AbsAdapter 是一个积木化的Adapter </br>
 
 ## lib
 compile 'com.jakewharton:butterknife:6.1.0' </br>
-compile 'com.arialyy.absadapter:AbsAdapter:1.0.3'</br>
+compile 'com.arialyy.absadapter:AbsAdapter:1.1.0'</br>
 
 为了防止gradle编译失败，你还需要在app 的 build.gradle 文件的`android{}`块中添加以下代码
-```java
+```
 android{
     ...
     packagingOptions {
@@ -172,7 +172,7 @@ public class LvAdapter extends AbsLvDAdapter<AbsDEntity> {
 
 * Item点击事件
 
-```java
+```
 RvItemClickSupport.addTo(recyclerView).setOnItemClickListener(new RvItemClickSupport.OnItemClickListener() {
      @Override
      public void onItemClicked(RecyclerView recyclerView, int position, View v) {
@@ -182,7 +182,7 @@ RvItemClickSupport.addTo(recyclerView).setOnItemClickListener(new RvItemClickSup
 
 * Item长按事件
 
-```java
+```
 RvItemClickSupport.addTo(recyclerView).setOnItemLongClickListener(new RvItemClickSupport.OnItemLongClickListener() {
     @Override
     public boolean onItemLongClicked(RecyclerView recyclerView, int position, View v) {
@@ -194,7 +194,7 @@ RvItemClickSupport.addTo(recyclerView).setOnItemLongClickListener(new RvItemClic
 
 * Item 触摸事件
 
-```java
+```
 RvItemClickSupport.addTo(mList).setOnItemTouchListener(new RvItemClickSupport.OnItemTouchListener() {
     @Override
     public void onTouchEvent(RecyclerView rv, MotionEvent e, int position, View v) {
