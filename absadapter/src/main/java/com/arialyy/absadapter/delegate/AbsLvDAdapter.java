@@ -16,6 +16,7 @@
 package com.arialyy.absadapter.delegate;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import android.widget.BaseAdapter;
 import com.arialyy.absadapter.common.AbsUtil;
 import com.arialyy.absadapter.common.AbsHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,9 +33,9 @@ import java.util.List;
  * 处理含有多个ViewType的Adapter使用
  */
 public abstract class AbsLvDAdapter<T extends AbsDEntity> extends BaseAdapter implements AbsIAdapter<T> {
-    private LayoutInflater mInflater;
-    protected List<T> mData;
-    private Context mContext;
+    private   LayoutInflater mInflater;
+    protected List<T>        mData;
+    private   Context        mContext;
     private AbsDManager mManager = new AbsDManager();
     private String TAG;
 
@@ -42,6 +44,15 @@ public abstract class AbsLvDAdapter<T extends AbsDEntity> extends BaseAdapter im
         mData = data;
         mContext = context;
         TAG = AbsUtil.getClassName(this);
+    }
+
+    /**
+     * 删除样式
+     * @param clazz Delegation 的class
+     */
+    public void delDelegate(Class clazz) {
+        mManager.delDelegate((List<AbsDEntity>)mData, clazz);
+        notifyDataSetChanged();
     }
 
     @Override
@@ -86,8 +97,8 @@ public abstract class AbsLvDAdapter<T extends AbsDEntity> extends BaseAdapter im
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        AbsHolder holder;
-        int type = getItemViewType(position);
+        AbsHolder      holder;
+        int            type       = getItemViewType(position);
         AbsIDelegation delegation = mManager.getDelegate(type);
         if (delegation == null) {
             throw new NullPointerException("没有type == " + type + "的Delegate");

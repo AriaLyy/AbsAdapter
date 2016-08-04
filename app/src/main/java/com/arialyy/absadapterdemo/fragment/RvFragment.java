@@ -13,6 +13,7 @@ import com.arialyy.absadapterdemo.Constance;
 import com.arialyy.absadapterdemo.R;
 import com.arialyy.absadapterdemo.base.BaseFragment;
 import com.arialyy.absadapterdemo.databinding.FragmentRvBinding;
+import com.arialyy.absadapterdemo.delegate.GameDetailDelegate;
 import com.arialyy.absadapterdemo.module.DataModule;
 import com.arialyy.absadapterdemo.recycle_view.RvAdapter_1;
 import com.arialyy.absadapterdemo.recycle_view.RvAdapter_2;
@@ -35,11 +36,16 @@ public class RvFragment extends BaseFragment<FragmentRvBinding> {
     int mType = 0;
 
     public static RvFragment newInstance(int type) {
-        Bundle args = new Bundle();
+        Bundle     args     = new Bundle();
         RvFragment fragment = new RvFragment();
         args.putInt(Constance.KEY.RV_ITEM_TYPE, type);
         fragment.setArguments(args);
         return fragment;
+    }
+
+
+    public void delDelegate() {
+        mAdapter.delDelegate(GameDetailDelegate.class);
     }
 
     @Override

@@ -42,6 +42,16 @@ public abstract class AbsRvDAdapter<T extends AbsDEntity> extends RecyclerView.A
         TAG = AbsUtil.getClassName(this);
     }
 
+    /**
+     * 删除样式
+     *
+     * @param clazz Delegation 的class
+     */
+    public void delDelegate(Class clazz) {
+        mManager.delDelegate((List<AbsDEntity>) mData, clazz);
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getItemViewType(int position) {
         return mData.get(position).getAbsType();
@@ -73,7 +83,7 @@ public abstract class AbsRvDAdapter<T extends AbsDEntity> extends RecyclerView.A
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        int type = getItemViewType(position);
+        int            type       = getItemViewType(position);
         AbsIDelegation delegation = mManager.getDelegate(type);
         if (delegation == null) {
             throw new NullPointerException("没有type == " + type + "，的Delegate");

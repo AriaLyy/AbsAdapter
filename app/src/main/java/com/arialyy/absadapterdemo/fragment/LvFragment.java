@@ -11,6 +11,7 @@ import com.arialyy.absadapterdemo.Constance;
 import com.arialyy.absadapterdemo.R;
 import com.arialyy.absadapterdemo.base.BaseFragment;
 import com.arialyy.absadapterdemo.databinding.FragmentRvBinding;
+import com.arialyy.absadapterdemo.delegate.GameDetailDelegate;
 import com.arialyy.absadapterdemo.listview.LvAdapter_1;
 import com.arialyy.absadapterdemo.listview.LvAdapter_2;
 import com.arialyy.absadapterdemo.listview.LvAdapter_3;
@@ -33,7 +34,7 @@ public class LvFragment extends BaseFragment<FragmentRvBinding> {
     int mType = 0;
 
     public static LvFragment newInstance(int type) {
-        Bundle args = new Bundle();
+        Bundle     args     = new Bundle();
         LvFragment fragment = new LvFragment();
         args.putInt(Constance.KEY.RV_ITEM_TYPE, type);
         fragment.setArguments(args);
@@ -43,6 +44,10 @@ public class LvFragment extends BaseFragment<FragmentRvBinding> {
     @Override
     protected int setLayoutId() {
         return R.layout.fragment_lv;
+    }
+
+    public void delDelegate() {
+        mAdapter.delDelegate(GameDetailDelegate.class);
     }
 
     @Override
