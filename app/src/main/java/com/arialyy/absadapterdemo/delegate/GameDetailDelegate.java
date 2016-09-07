@@ -14,7 +14,7 @@ import com.arialyy.absadapterdemo.R;
 import com.arialyy.absadapterdemo.entity.GameDetailEntity;
 import com.bumptech.glide.Glide;
 
-import butterknife.InjectView;
+import butterknife.Bind;
 
 /**
  * Created by lyy on 2016/6/21.
@@ -63,13 +63,13 @@ public class GameDetailDelegate extends AbsDelegation<GameDetailEntity, GameDeta
     }
 
     class GameDetailHolder extends AbsHolder {
-        @InjectView(R.id.img)
+        @Bind(R.id.img)
         ImageView img;
-        @InjectView(R.id.title)
+        @Bind(R.id.title)
         TextView  title;
-        @InjectView(R.id.game_detail)
+        @Bind(R.id.game_detail)
         TextView  detail;
-        @InjectView(R.id.bt)
+        @Bind(R.id.bt)
         Button    bt;
 
         public GameDetailHolder(View itemView) {

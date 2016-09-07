@@ -12,7 +12,7 @@ import com.arialyy.absadapterdemo.R;
 import com.arialyy.absadapterdemo.entity.GameNotifyEntity;
 import com.bumptech.glide.Glide;
 
-import butterknife.InjectView;
+import butterknife.Bind;
 
 /**
  * Created by lyy on 2016/6/21.
@@ -41,13 +41,13 @@ public class GameNotifyDelegate extends AbsDelegation<GameNotifyEntity, GameNoti
     }
 
     class GameNotifyHolder extends AbsHolder {
-        @InjectView(R.id.img)
+        @Bind(R.id.img)
         ImageView img;
-        @InjectView(R.id.game_img)
+        @Bind(R.id.game_img)
         ImageView gameIcon;
-        @InjectView(R.id.title)
+        @Bind(R.id.title)
         TextView  title;
-        @InjectView(R.id.detail)
+        @Bind(R.id.detail)
         TextView  detail;
 
         public GameNotifyHolder(View itemView) {

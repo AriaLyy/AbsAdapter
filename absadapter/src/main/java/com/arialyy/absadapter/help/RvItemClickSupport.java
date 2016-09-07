@@ -35,6 +35,7 @@ public class RvItemClickSupport {
     private OnItemClickListener mOnItemClickListener;
     private OnItemLongClickListener mOnItemLongClickListener;
     private OnItemTouchListener mOnItemTouchListener;
+    private OnItemFocusChangeListener mOnItemFocusChangeListener;
 
     public interface OnItemClickListener {
         void onItemClicked(RecyclerView recyclerView, int position, View v);
@@ -48,9 +49,22 @@ public class RvItemClickSupport {
         public void onTouchEvent(RecyclerView rv, MotionEvent e, int position, View v);
     }
 
+    public interface OnItemFocusChangeListener {
+        public void onFocusChange(View v, int position, boolean hasFocus);
+    }
+
+    private View.OnFocusChangeListener mOnFocusChangeListener = new View.OnFocusChangeListener() {
+
+        @Override public void onFocusChange(View v, boolean hasFocus) {
+            if (mOnItemFocusChangeListener != null) {
+                RecyclerView.ViewHolder holder = mRecyclerView.getChildViewHolder(v);
+                mOnItemFocusChangeListener.onFocusChange(v,  holder.getAdapterPosition(), holder.itemView.hasFocus());
+            }
+        }
+    };
+
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
+        @Override public void onClick(View v) {
             if (mOnItemClickListener != null) {
                 RecyclerView.ViewHolder holder = mRecyclerView.getChildViewHolder(v);
                 mOnItemClickListener.onItemClicked(mRecyclerView, holder.getAdapterPosition(), v);
@@ -59,19 +73,18 @@ public class RvItemClickSupport {
     };
 
     private View.OnLongClickListener mOnLongClickListener = new View.OnLongClickListener() {
-        @Override
-        public boolean onLongClick(View v) {
+        @Override public boolean onLongClick(View v) {
             if (mOnItemLongClickListener != null) {
                 RecyclerView.ViewHolder holder = mRecyclerView.getChildViewHolder(v);
-                return mOnItemLongClickListener.onItemLongClicked(mRecyclerView, holder.getAdapterPosition(), v);
+                return mOnItemLongClickListener.onItemLongClicked(mRecyclerView,
+                        holder.getAdapterPosition(), v);
             }
             return false;
         }
     };
 
     private View.OnTouchListener mOnTouchListener = new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
+        @Override public boolean onTouch(View v, MotionEvent event) {
             if (mOnItemTouchListener != null) {
                 RecyclerView.ViewHolder holder = mRecyclerView.getChildViewHolder(v);
                 mOnItemTouchListener.onTouchEvent(mRecyclerView, event, holder.getAdapterPosition(), v);
@@ -80,26 +93,27 @@ public class RvItemClickSupport {
         }
     };
 
-    private RecyclerView.OnChildAttachStateChangeListener mAttachListener
-            = new RecyclerView.OnChildAttachStateChangeListener() {
-        @Override
-        public void onChildViewAttachedToWindow(View view) {
-            if (mOnItemClickListener != null) {
-                view.setOnClickListener(mOnClickListener);
-            }
-            if (mOnItemLongClickListener != null) {
-                view.setOnLongClickListener(mOnLongClickListener);
-            }
-            if (mOnItemTouchListener != null) {
-                view.setOnTouchListener(mOnTouchListener);
-            }
-        }
+    private RecyclerView.OnChildAttachStateChangeListener mAttachListener =
+            new RecyclerView.OnChildAttachStateChangeListener() {
+                @Override public void onChildViewAttachedToWindow(View view) {
+                    if (mOnItemClickListener != null) {
+                        view.setOnClickListener(mOnClickListener);
+                    }
+                    if (mOnItemLongClickListener != null) {
+                        view.setOnLongClickListener(mOnLongClickListener);
+                    }
+                    if (mOnItemTouchListener != null) {
+                        view.setOnTouchListener(mOnTouchListener);
+                    }
+                    if (mOnItemFocusChangeListener != null) {
+                        view.setOnFocusChangeListener(mOnFocusChangeListener);
+                    }
+                }
 
-        @Override
-        public void onChildViewDetachedFromWindow(View view) {
+                @Override public void onChildViewDetachedFromWindow(View view) {
 
-        }
-    };
+                }
+            };
 
     private RvItemClickSupport(RecyclerView recyclerView) {
         mRecyclerView = recyclerView;
@@ -124,10 +138,16 @@ public class RvItemClickSupport {
     }
 
     /**
+     * 设置焦点监听
+     */
+    public RvItemClickSupport setOnItemFocusChangeListener(
+            OnItemFocusChangeListener onItemFocusChangeListener) {
+        mOnItemFocusChangeListener = onItemFocusChangeListener;
+        return this;
+    }
+
+    /**
      * 设置触摸监听
-     *
-     * @param onItemTouchListener
-     * @return
      */
     public RvItemClickSupport setOnItemTouchListener(OnItemTouchListener onItemTouchListener) {
         mOnItemTouchListener = onItemTouchListener;
@@ -136,9 +156,6 @@ public class RvItemClickSupport {
 
     /**
      * 设置点击监听
-     *
-     * @param listener
-     * @return
      */
     public RvItemClickSupport setOnItemClickListener(OnItemClickListener listener) {
         mOnItemClickListener = listener;
@@ -147,9 +164,6 @@ public class RvItemClickSupport {
 
     /**
      * 设置长按监听
-     *
-     * @param listener
-     * @return
      */
     public RvItemClickSupport setOnItemLongClickListener(OnItemLongClickListener listener) {
         mOnItemLongClickListener = listener;

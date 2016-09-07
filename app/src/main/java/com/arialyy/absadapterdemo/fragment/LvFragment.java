@@ -21,13 +21,13 @@ import com.arialyy.frame.util.show.T;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.InjectView;
+import butterknife.Bind;
 
 /**
  * Created by lyy on 2016/7/5.
  */
 public class LvFragment extends BaseFragment<FragmentRvBinding> {
-    @InjectView(R.id.list)
+    @Bind(R.id.list)
     ListView mList;
     List<AbsDEntity> mData = new ArrayList<>();
     AbsLvDAdapter mAdapter;

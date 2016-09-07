@@ -32,7 +32,7 @@ public class AbsHolder extends RecyclerView.ViewHolder {
 
     public AbsHolder(View itemView) {
         super(itemView);
-        ButterKnife.inject(this, itemView);
+        ButterKnife.bind(this, itemView);
     }
 
     @SuppressWarnings("unchecked")

@@ -18,7 +18,7 @@ import com.arialyy.frame.core.AbsActivity;
 
 import java.util.List;
 
-import butterknife.InjectView;
+import butterknife.Bind;
 
 /**
  * Created by lyy on 2016/6/21.
@@ -60,9 +60,9 @@ public class BannerDelegate extends AbsDelegation<DBannerEntity, BannerDelegate.
     }
 
     class BannerHolder extends AbsHolder {
-        @InjectView(R.id.vp)
+        @Bind(R.id.vp)
         ViewPager       vp;
-        @InjectView(R.id.indicator)
+        @Bind(R.id.indicator)
         CircleIndicator indicator;
 
         public BannerHolder(View itemView) {

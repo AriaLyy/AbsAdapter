@@ -19,8 +19,8 @@ AbsAdapter 是一个积木化的Adapter </br>
 * 如过你对我的代码有任何疑问或者发现任何bug，麻烦您在[issues](https://github.com/AriaLyy/AbsAdapter/issues)告诉我
 
 ## lib
-compile 'com.jakewharton:butterknife:6.1.0' </br>
-compile 'com.arialyy.absadapter:AbsAdapter:1.1.1'</br>
+compile 'com.jakewharton:butterknife:7.0.1' </br>
+compile 'com.arialyy.absadapter:AbsAdapter:1.1.2'</br>
 
 为了防止gradle编译失败，你还需要在app 的 build.gradle 文件的`android{}`块中添加以下代码
 ```
@@ -203,6 +203,8 @@ RvItemClickSupport.addTo(mList).setOnItemTouchListener(new RvItemClickSupport.On
 });
 ```
 ## 升级日志
+1.1.3 * butterknife由6.1.0 ==> 7.0.1
+      * RvItemClickSupport增加焦点事件监听
 1.1.1 增加删除样式功能
 
 ## License

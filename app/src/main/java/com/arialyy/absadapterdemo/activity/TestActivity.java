@@ -8,13 +8,13 @@ import com.arialyy.absadapterdemo.R;
 import com.arialyy.absadapterdemo.base.BaseActivity;
 import com.arialyy.absadapterdemo.databinding.ActivityTestBinding;
 
-import butterknife.InjectView;
+import butterknife.Bind;
 
 /**
  * Created by lyy on 2016/7/12.
  */
 public class TestActivity extends BaseActivity<ActivityTestBinding> {
-    @InjectView(R.id.list)
+    @Bind(R.id.list)
     RecyclerView mList;
 
     @Override

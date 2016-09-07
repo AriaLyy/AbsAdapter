@@ -13,17 +13,17 @@ import com.arialyy.absadapterdemo.base.BaseActivity;
 import com.arialyy.absadapterdemo.databinding.ActivityListViewBinding;
 import com.arialyy.absadapterdemo.fragment.LvFragment;
 
-import butterknife.InjectView;
+import butterknife.Bind;
 
 /**
  * Created by lyy on 2016/5/30.
  */
 public class ListViewActivity extends BaseActivity<ActivityListViewBinding> {
-    @InjectView(R.id.vp)
+    @Bind(R.id.vp)
     ViewPager            mVp;
-    @InjectView(R.id.tab)
+    @Bind(R.id.tab)
     TabLayout            mTab;
-    @InjectView(R.id.fb)
+    @Bind(R.id.fb)
     FloatingActionButton mFb;
     SimpleViewPagerAdapter mAdapter;
 

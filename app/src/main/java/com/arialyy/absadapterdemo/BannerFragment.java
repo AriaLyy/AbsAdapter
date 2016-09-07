@@ -15,7 +15,7 @@ import com.arialyy.frame.core.AbsFragment;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
-import butterknife.InjectView;
+import butterknife.Bind;
 
 /**
  * Created by lyy on 2015/11/18.
@@ -24,7 +24,7 @@ import butterknife.InjectView;
 @SuppressLint("ValidFragment")
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class BannerFragment extends BaseFragment<FragmentBannerBinding> {
-    @InjectView(R.id.img_banner)
+    @Bind(R.id.img_banner)
     ImageView mBannerImg;
     private BannerEntity mEntity;
     private boolean isCanClick = false;

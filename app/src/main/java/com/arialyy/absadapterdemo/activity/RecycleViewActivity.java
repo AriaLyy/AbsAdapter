@@ -13,18 +13,19 @@ import com.arialyy.absadapterdemo.base.BaseActivity;
 import com.arialyy.absadapterdemo.databinding.ActivityRecycleViewBinding;
 import com.arialyy.absadapterdemo.fragment.RvFragment;
 
-import butterknife.InjectView;
+import butterknife.Bind;
+
 
 /**
  * Created by lyy on 2016/5/30.
  */
 public class RecycleViewActivity extends BaseActivity<ActivityRecycleViewBinding> {
-    @InjectView(R.id.vp)
+    @Bind(R.id.vp)
     ViewPager mVp;
-    @InjectView(R.id.tab)
+    @Bind(R.id.tab)
     TabLayout mTab;
 
-    @InjectView(R.id.fb)
+    @Bind(R.id.fb)
     FloatingActionButton mFb;
     SimpleViewPagerAdapter mAdapter;
 

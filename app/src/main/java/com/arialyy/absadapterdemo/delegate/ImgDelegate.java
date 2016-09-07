@@ -11,7 +11,7 @@ import com.arialyy.absadapter.delegate.AbsIAdapter;
 import com.arialyy.absadapterdemo.R;
 import com.arialyy.absadapterdemo.entity.ImgEntity;
 
-import butterknife.InjectView;
+import butterknife.Bind;
 
 /**
  * Created by lyy on 2016/5/30.
@@ -38,9 +38,9 @@ public class ImgDelegate extends AbsDelegation<ImgEntity, ImgDelegate.LVImgHolde
     }
 
     public class LVImgHolder extends AbsHolder {
-        @InjectView(R.id.img)
+        @Bind(R.id.img)
         ImageView img;
-        @InjectView(R.id.text)
+        @Bind(R.id.text)
         TextView text;
 
         public LVImgHolder(View itemView) {
