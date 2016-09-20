@@ -202,10 +202,9 @@ RvItemClickSupport.addTo(mList).setOnItemTouchListener(new RvItemClickSupport.On
     }
 });
 ```
-## 升级日志
-1.1.3 * butterknife由6.1.0 ==> 7.0.1
-      * RvItemClickSupport增加焦点事件监听
-1.1.1 增加删除样式功能
+## 开发日志
+* 1.1.3 butterknife由6.1.0 ==> 7.0.1，RvItemClickSupport增加焦点事件监听
+* 1.1.1 增加删除样式功能
 
 ## License
 
